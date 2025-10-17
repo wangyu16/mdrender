@@ -150,6 +150,15 @@ p {
 }
 
 /* Code Blocks - Styled by Prism.js */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: inherit !important;
+}
+
+/* Ensure Prism token colors are visible */
+.token {
+  color: inherit;
+}
 
 /* Blockquotes */
 blockquote {

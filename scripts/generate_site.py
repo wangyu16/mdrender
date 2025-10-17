@@ -80,6 +80,16 @@ def make_page(title: str, body_html: str, style_href: str = None):
     """Generate a single content HTML page."""
     style_link = f'<link rel="stylesheet" href="{style_href}">' if style_href else ""
     katex_css = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">'
+    prism_overrides = """  <!-- Ensure Prism.js token colors are visible -->
+  <style>
+    code[class*="language-"],
+    pre[class*="language-"] {
+      color: inherit !important;
+    }
+    .token {
+      color: inherit;
+    }
+  </style>"""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -94,6 +104,8 @@ def make_page(title: str, body_html: str, style_href: str = None):
   <!-- Prism.js plugins -->
   <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
   <link href="prism/prism-toolbar.min.css" rel="stylesheet" />
+
+{prism_overrides}
 
 </head>
 <body>
@@ -125,6 +137,16 @@ def make_index_page(file_list, style_href: str = None):
   <!-- Prism.js plugins -->
   <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
   <link href="prism/prism-toolbar.min.css" rel="stylesheet" />"""
+    prism_overrides = """  <!-- Ensure Prism.js token colors are visible -->
+  <style>
+    code[class*="language-"],
+    pre[class*="language-"] {
+      color: inherit !important;
+    }
+    .token {
+      color: inherit;
+    }
+  </style>"""
     
     # Build the navigation list
     nav_items = []
