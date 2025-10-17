@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NEW_THEMES_GUIDE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="../style/style_template1.css">
+  <!-- Prism.js theme - Tomorrow Night -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css"
+    rel="stylesheet" />
+
+</head>
+<body>
+<main>
+<h1>New Style Templates - Design Inspiration Guide</h1>
+<p>This document describes the four new style templates added to the mdrender project, which were inspired by reference stylesheets provided in the <code>temp/</code> folder.</p>
+<h2>Overview</h2>
+<p>The new templates maintain the two-panel layout architecture (sidebar navigation + content area) while incorporating modern design patterns from the reference stylesheets. All templates support:</p>
+<ul><li>✅ Custom CSS classes (8 div classes + 5 span classes)</li><li>✅ Theme switcher integration with localStorage persistence</li><li>✅ Responsive design for mobile and desktop</li><li>✅ KaTeX math rendering support</li><li>✅ Proper typography hierarchy</li><li>✅ Code syntax highlighting</li></ul>
+<hr>
+<h2>Template 6: Modern Gradient Light</h2>
+<p><strong>File:</strong> <code>style_template6_modern_gradient.css</code></p>
+<p><strong>Inspiration:</strong> Based on <code>modern-light.css</code> with purple gradient accents</p>
+<p><strong>Key Features:</strong></p>
+<ul><li><strong>Typography:</strong> Inter font family for clean, modern readability</li><li><strong>Colors:</strong> Purple gradient theme (#8b5cf6 to #a78bfa)</li><li><strong>Layout:</strong> Wide content area (max-width: 900px) for comfortable reading</li><li><strong>Design Philosophy:</strong> Contemporary tech aesthetic with gradient effects</li><li><strong>Special Elements:</strong></li><li>Gradient headings and borders</li><li>Smooth transitions and hover effects</li><li>CSS custom properties for easy customization</li><li>Shadow utilities for depth</li></ul>
+<p><strong>Best Use Cases:</strong></p>
+<ul><li>Tech documentation</li><li>Modern web development tutorials</li><li>SaaS product documentation</li><li>Developer portfolios</li></ul>
+<p><strong>Color Palette:</strong></p>
+<ul><li>Primary: <code>#1e293b</code> (dark slate)</li><li>Accent: <code>#8b5cf6</code> (purple)</li><li>Secondary Accent: <code>#a78bfa</code> (light purple)</li><li>Background: <code>#ffffff</code> (white)</li><li>Surface: <code>#f8fafc</code> (light gray)</li></ul>
+<hr>
+<h2>Template 7: Serif Academic</h2>
+<p><strong>File:</strong> <code>style_template7_serif_academic.css</code></p>
+<p><strong>Inspiration:</strong> Based on <code>academic-light.css</code> with scholarly design</p>
+<p><strong>Key Features:</strong></p>
+<ul><li><strong>Typography:</strong> Merriweather (body) + Montserrat (headings) for traditional scholarly feel</li><li><strong>Colors:</strong> Blue accent theme (#3498db) with professional gray tones</li><li><strong>Layout:</strong> Medium content width (max-width: 850px) optimized for long-form reading</li><li><strong>Design Philosophy:</strong> Classical academic style with modern touches</li><li><strong>Special Elements:</strong></li><li>Justified text with hyphens for print-like appearance</li><li>Section markers (§) on horizontal rules</li><li>Drop-quote styling in blockquotes</li><li>Footnote-ready formatting</li></ul>
+<p><strong>Best Use Cases:</strong></p>
+<ul><li>Research papers</li><li>Academic course materials</li><li>Educational textbooks</li><li>Formal documentation</li><li>Thesis/dissertation materials</li></ul>
+<p><strong>Color Palette:</strong></p>
+<ul><li>Primary: <code>#2c3e50</code> (dark blue-gray)</li><li>Accent: <code>#3498db</code> (bright blue)</li><li>Background: <code>#ffffff</code> (white)</li><li>Surface: <code>#f8f9fa</code> (light gray)</li><li>Sidebar: <code>#ecf0f1</code> (light gray-blue)</li></ul>
+<hr>
+<h2>Template 8: Minimal Elegant Dark</h2>
+<p><strong>File:</strong> <code>style_template8_minimal_dark.css</code></p>
+<p><strong>Inspiration:</strong> Based on <code>minimal-dark.css</code> with refined dark mode design</p>
+<p><strong>Key Features:</strong></p>
+<ul><li><strong>Typography:</strong> Lato (body) + Raleway (headings) + JetBrains Mono (code)</li><li><strong>Colors:</strong> Blue accent (#64b5f6) on dark background (#121212)</li><li><strong>Layout:</strong> Moderate width (max-width: 800px) for focused reading</li><li><strong>Design Philosophy:</strong> Minimalist dark mode with OLED-friendly true black</li><li><strong>Special Elements:</strong></li><li>Pure black backgrounds (#121212) for OLED screens</li><li>Subtle borders and shadows</li><li>Clean, distraction-free interface</li><li>Smooth color transitions</li></ul>
+<p><strong>Best Use Cases:</strong></p>
+<ul><li>Night-time reading/coding</li><li>Developer documentation</li><li>Terminal-style documentation</li><li>Privacy-focused content</li><li>Low-light environments</li></ul>
+<p><strong>Color Palette:</strong></p>
+<ul><li>Primary: <code>#e8e8e8</code> (light gray text)</li><li>Accent: <code>#64b5f6</code> (blue)</li><li>Background: <code>#121212</code> (true black)</li><li>Surface: <code>#1e1e1e</code> (dark gray)</li><li>Sidebar: <code>#0d0d0d</code> (darker black)</li></ul>
+<hr>
+<h2>Template 9: Modern Dark Professional</h2>
+<p><strong>File:</strong> <code>style_template9_modern_dark.css</code></p>
+<p><strong>Inspiration:</strong> Based on <code>modern-dark.css</code> with purple gradient theme</p>
+<p><strong>Key Features:</strong></p>
+<ul><li><strong>Typography:</strong> Inter (body/headings) + JetBrains Mono (code)</li><li><strong>Colors:</strong> Purple gradient theme (#8b5cf6 to #a78bfa) on slate background</li><li><strong>Layout:</strong> Wider content (max-width: 900px) for comprehensive content</li><li><strong>Design Philosophy:</strong> Modern professional dark mode with gradient accents</li><li><strong>Special Elements:</strong></li><li>Gradient text effects (WebKit background-clip)</li><li>Linear gradient borders and dividers</li><li>Gradient scrollbars</li><li>Box shadows with color glow effects</li><li>Smooth gradient transitions</li></ul>
+<p><strong>Best Use Cases:</strong></p>
+<ul><li>Modern SaaS documentation</li><li>Developer tools documentation</li><li>Tech startup product docs</li><li>API references</li><li>Progressive web app documentation</li></ul>
+<p><strong>Color Palette:</strong></p>
+<ul><li>Primary: <code>#f1f5f9</code> (light slate text)</li><li>Accent: <code>#8b5cf6</code> (purple)</li><li>Secondary Accent: <code>#a78bfa</code> (light purple)</li><li>Background: <code>#0f172a</code> (dark slate)</li><li>Surface: <code>#1e293b</code> (medium slate)</li></ul>
+<hr>
+<h2>Design Patterns Adopted</h2>
+<p>All new templates incorporate these modern CSS patterns from the reference stylesheets:</p>
+<h3>1. CSS Custom Properties (Variables)</h3>
+<pre><code class="language-css">:root {
+    --primary-color: #...;
+    --accent-color: #...;
+    --background: #...;
+}</code></pre>
+<p>Benefits: Easy theming, consistent color usage, maintainability</p>
+<h3>2. Google Fonts Integration</h3>
+<p>All templates use <code>@import</code> to load web fonts for improved typography:</p>
+<ul><li>Inter: Modern geometric sans-serif</li><li>Lato: Friendly humanist sans-serif</li><li>Raleway: Elegant display font</li><li>Merriweather: Classic serif for body text</li><li>Montserrat: Strong geometric headings</li><li>JetBrains Mono: Developer-friendly monospace</li><li>Fira Code: Code-focused monospace</li></ul>
+<h3>3. Gradient Effects</h3>
+<p>Modern templates (6 & 9) use CSS gradients for:</p>
+<ul><li>Background effects</li><li>Text effects (via background-clip)</li><li>Border decorations</li><li>Button/badge styling</li><li>Smooth color transitions</li></ul>
+<h3>4. Dark Mode Optimization</h3>
+<p>Dark templates (8 & 9) implement:</p>
+<ul><li>True black (#121212) for OLED screens</li><li>Proper contrast ratios (WCAG compliant)</li><li>Muted accent colors to reduce eye strain</li><li>Subtle borders instead of harsh lines</li><li>Gradient scrollbars</li></ul>
+<h3>5. Custom Class Consistency</h3>
+<p>All templates maintain visual consistency for custom classes:</p>
+<ul><li><code>.callout</code>, <code>.tip</code>, <code>.warning</code>, <code>.note</code>: Informational boxes</li><li><code>.highlight-box</code>, <code>.quote-box</code>, <code>.alert</code>, <code>.success</code>: Content emphasis</li><li><code>.highlight</code>, <code>.emphasis</code>, <code>.subtle</code>, <code>.badge</code>, <code>.tag</code>: Inline styling</li></ul>
+<hr>
+<h2>Responsive Design</h2>
+<p>All new templates include mobile-friendly responsive breakpoints:</p>
+<pre><code class="language-css">@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .sidebar { width: 100%; }
+    .content { padding: 40px 24px; }
+}</code></pre>
+<p><strong>Mobile Changes:</strong></p>
+<ul><li>Sidebar moves to top of page</li><li>Navigation becomes horizontal/collapsible</li><li>Content padding adjusts for smaller screens</li><li>Font sizes scale appropriately</li></ul>
+<hr>
+<h2>Theme Selector Integration</h2>
+<p>All new themes are integrated into the theme selector dropdown in <code>index.html</code>:</p>
+<pre><code class="language-html">&lt;select id=&quot;theme-select&quot; onchange=&quot;changeTheme(this.value)&quot;&gt;
+  &lt;option value=&quot;style_template1.css&quot;&gt;Professional&lt;/option&gt;
+  &lt;option value=&quot;style_template2_minimalist.css&quot;&gt;Minimalist&lt;/option&gt;
+  &lt;option value=&quot;style_template3_dark.css&quot;&gt;Dark Mode&lt;/option&gt;
+  &lt;option value=&quot;style_template4_vibrant.css&quot;&gt;Vibrant&lt;/option&gt;
+  &lt;option value=&quot;style_template5_academic.css&quot;&gt;Academic&lt;/option&gt;
+  &lt;option value=&quot;style_template6_modern_gradient.css&quot;&gt;Modern Gradient&lt;/option&gt;
+  &lt;option value=&quot;style_template7_serif_academic.css&quot;&gt;Serif Academic&lt;/option&gt;
+  &lt;option value=&quot;style_template8_minimal_dark.css&quot;&gt;Minimal Dark&lt;/option&gt;
+  &lt;option value=&quot;style_template9_modern_dark.css&quot;&gt;Modern Dark&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<p>User preferences are persisted via localStorage for seamless experience across sessions.</p>
+<hr>
+<h2>Testing Checklist</h2>
+<p>When testing new themes, verify:</p>
+<ul><li>[ ] Theme selector dropdown includes all 9 templates</li><li>[ ] Theme switching works without page reload</li><li>[ ] localStorage saves theme preference</li><li>[ ] All custom classes render correctly (<code>.callout</code>, <code>.tip</code>, etc.)</li><li>[ ] Code blocks have proper syntax highlighting</li><li>[ ] Math equations (KaTeX) display correctly</li><li>[ ] Navigation sidebar is functional</li><li>[ ] Content area scrolls properly</li><li>[ ] Links and hover effects work</li><li>[ ] Responsive design works on mobile (< 768px)</li><li>[ ] Images display with proper styling</li><li>[ ] Tables render with correct formatting</li><li>[ ] Blockquotes have distinctive styling</li></ul>
+<hr>
+<h2>Future Enhancements</h2>
+<p>Potential improvements for the template system:</p>
+<ol><li><strong>Theme Variants:</strong> Add light/dark variants for each theme</li><li><strong>Font Size Controls:</strong> Add user-adjustable font size slider</li><li><strong>Contrast Modes:</strong> High contrast variants for accessibility</li><li><strong>Print Styles:</strong> Optimized CSS for printing documentation</li><li><strong>Export Themes:</strong> Allow users to export custom theme configurations</li><li><strong>Theme Preview:</strong> Add thumbnail previews in theme selector</li><li><strong>Syntax Highlighting:</strong> Integrate Prism.js or Highlight.js themes</li><li><strong>Animation Options:</strong> Toggle animations for reduced motion preferences</li></ol>
+<hr>
+<h2>Maintenance Notes</h2>
+<h3>Adding New Themes</h3>
+<p>To add a new theme:</p>
+<pre><code class="language-python">   &lt;option value=&quot;style_template10_custom.css&quot;&gt;Custom Theme&lt;/option&gt;</code></pre>
+<ol><li>Create CSS file in <code>style/</code> folder (e.g., <code>style_template10_custom.css</code>)</li><li>Follow the two-panel layout structure (<code>.container</code>, <code>.sidebar</code>, <code>.content</code>)</li><li>Implement all custom classes (<code>.callout</code>, <code>.tip</code>, etc.)</li><li>Add responsive breakpoints for mobile</li><li>Update theme selector in <code>scripts/generate_site.py</code>:</li><li>Regenerate site: <code>python3 scripts/generate_site.py</code></li><li>Test theme switching and custom class rendering</li></ol>
+<h3>CSS Architecture</h3>
+<p>Each template should include:</p>
+<ul><li>CSS reset/normalization</li><li>CSS custom properties (<code>:root</code> variables)</li><li>Container layout (<code>.container</code>, <code>.sidebar</code>, <code>.content</code>)</li><li>Typography hierarchy (h1-h6, p, lists)</li><li>Code styling (code, pre)</li><li>Interactive elements (links, buttons)</li><li>Custom classes (div and span)</li><li>Responsive breakpoints</li><li>Scrollbar styling (optional)</li></ul>
+<hr>
+<h2>Credits</h2>
+<p><strong>Reference Stylesheets:</strong></p>
+<ul><li><code>minimal-light.css</code> / <code>minimal-dark.css</code>: Inspired Templates 8</li><li><code>modern-light.css</code> / <code>modern-dark.css</code>: Inspired Templates 6, 9</li><li><code>academic-light.css</code> / <code>academic-dark.css</code>: Inspired Template 7</li></ul>
+<p><strong>Fonts:</strong></p>
+<ul><li>Google Fonts (fonts.google.com)</li></ul>
+<p><strong>Icon/Emoji:</strong></p>
+<ul><li>Unicode standard emoji for visual indicators</li></ul>
+<hr>
+<h2>Summary</h2>
+<p>The addition of four new templates expands the mdrender project from 5 to 9 professional themes, providing users with diverse visual options for their teaching materials:</p>
+<ol><li><strong>Professional</strong> (Original) - Blue accent two-panel</li><li><strong>Minimalist</strong> (Original) - Clean black/white</li><li><strong>Dark Mode</strong> (Original) - Professional dark theme</li><li><strong>Vibrant</strong> (Original) - Colorful purple/pink gradients</li><li><strong>Academic</strong> (Original) - Serif fonts with navy/red</li><li><strong>Modern Gradient</strong> (NEW) - Purple gradient light theme</li><li><strong>Serif Academic</strong> (NEW) - Classical scholarly design</li><li><strong>Minimal Dark</strong> (NEW) - Elegant OLED-friendly dark mode</li><li><strong>Modern Dark</strong> (NEW) - Purple gradient dark professional</li></ol>
+<p>Each theme maintains full compatibility with the theme switcher, custom classes, and responsive design requirements.</p>
+</main>
+</body>
+</html>

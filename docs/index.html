@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Learning Materials</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link id="theme-stylesheet" rel="stylesheet" href="../style/style_template1.css">
+  <style>
+    .theme-selector {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 12px 18px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    
+    .theme-selector label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+      white-space: nowrap;
+    }
+    
+    .theme-selector select {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 2px solid #ddd;
+      font-size: 14px;
+      cursor: pointer;
+      background: white;
+      min-width: 180px;
+      transition: border-color 0.3s ease;
+    }
+    
+    .theme-selector select:hover {
+      border-color: #3b82f6;
+    }
+    
+    .theme-selector select:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .theme-selector {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        flex-direction: column;
+        gap: 6px;
+      }
+      
+      .theme-selector label {
+        font-size: 12px;
+      }
+      
+      .theme-selector select {
+        font-size: 13px;
+        min-width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-selector">
+    <label for="theme-select">🎨 Theme:</label>
+    <select id="theme-select" onchange="changeTheme(this.value)">
+      <option value="style_template1.css">Professional</option>
+      <option value="style_template2_minimalist.css">Minimalist</option>
+      <option value="style_template3_dark.css">Dark Mode</option>
+      <option value="style_template4_vibrant.css">Vibrant</option>
+      <option value="style_template5_academic.css">Academic</option>
+      <option value="style_template6_modern_gradient.css">Modern Gradient</option>
+      <option value="style_template7_serif_academic.css">Serif Academic</option>
+      <option value="style_template8_minimal_dark.css">Minimal Dark</option>
+      <option value="style_template9_modern_dark.css">Modern Dark</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Contents</h2>
+      <nav>
+        <ul>
+        <li><a href="#" data-page="CODESPACE_SETUP.html">Codespace Setup</a></li>
+        <li><a href="#" data-page="CUSTOM_CLASSES_FEATURE.html">Custom Classes Feature</a></li>
+        <li><a href="#" data-page="FEATURE_SUMMARY.html">Feature Summary</a></li>
+        <li><a href="#" data-page="IMPLEMENTATION_SUMMARY.html">Implementation Summary</a></li>
+        <li><a href="#" data-page="NEW_THEMES_GUIDE.html">New Themes Guide</a></li>
+        <li><a href="#" data-page="NEW_THEMES_SUMMARY.html">New Themes Summary</a></li>
+        <li><a href="#" data-page="QUICKSTART.html">Quickstart</a></li>
+        <li><a href="#" data-page="STYLE_TEMPLATES_GUIDE.html">Style Templates Guide</a></li>
+        <li><a href="#" data-page="THEME_SWITCHER_FEATURE.html">Theme Switcher Feature</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="content" id="main-content">
+      <p>Loading...</p>
+    </main>
+  </div>
+  
+  <script>
+    // Theme switching functionality
+    function changeTheme(themeName) {
+      const themeLink = document.getElementById('theme-stylesheet');
+      const stylePath = themeLink.href.split('/').slice(0, -1).join('/');
+      themeLink.href = stylePath + '/' + themeName;
+      
+      // Save preference to localStorage
+      localStorage.setItem('preferred-theme', themeName);
+      
+      console.log('Theme changed to:', themeName);
+    }
+    
+    // Load saved theme preference on page load
+    function loadSavedTheme() {
+      const savedTheme = localStorage.getItem('preferred-theme');
+      const themeSelect = document.getElementById('theme-select');
+      
+      if (savedTheme) {
+        themeSelect.value = savedTheme;
+        changeTheme(savedTheme);
+      } else {
+        // Set default theme in dropdown
+        const currentTheme = 'style_template1.css';
+        themeSelect.value = currentTheme;
+      }
+    }
+    
+    // Load content dynamically
+    async function loadPage(filename) {
+      const contentDiv = document.getElementById('main-content');
+      try {
+        const response = await fetch(filename);
+        if (!response.ok) throw new Error('Failed to load page');
+        const html = await response.text();
+        
+        // Extract the main content from the loaded page
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const mainContent = doc.querySelector('main');
+        
+        if (mainContent) {
+          contentDiv.innerHTML = mainContent.innerHTML;
+        } else {
+          contentDiv.innerHTML = html;
+        }
+        
+        // Update active link
+        document.querySelectorAll('.sidebar nav a').forEach(a => {
+          a.classList.remove('active');
+        });
+        document.querySelector(`[data-page="${filename}"]`)?.classList.add('active');
+      } catch (error) {
+        contentDiv.innerHTML = '<p>Error loading content.</p>';
+        console.error(error);
+      }
+    }
+    
+    // Set up navigation
+    document.querySelectorAll('.sidebar nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = e.target.getAttribute('data-page');
+        loadPage(page);
+      });
+    });
+    
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedTheme();
+      
+      // Load first page
+      if ('CODESPACE_SETUP.html') {
+        loadPage('CODESPACE_SETUP.html');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,544 @@
+/* Style Template 7 - Clean Serif Academic */
+/* Inspired by academic-light.css with two-panel layout */
+/* Fonts: Merriweather (body), Montserrat (headings), Fira Code (code) */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --background: #ffffff;
+    --surface: #f8f9fa;
+    --text-primary: #2c3e50;
+    --text-secondary: #5d6d7e;
+    --border-color: #dee2e6;
+    --highlight-bg: #fff3cd;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.8;
+    color: var(--text-primary);
+    background: var(--background);
+}
+
+/* Two-Panel Container Layout */
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Left Sidebar */
+.sidebar {
+    width: 320px;
+    background: #ecf0f1;
+    color: var(--primary-color);
+    padding: 32px 24px;
+    overflow-y: auto;
+    flex-shrink: 0;
+    border-right: 3px solid var(--accent-color);
+}
+
+.sidebar h2 {
+    color: var(--accent-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4em;
+    font-weight: 800;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav li {
+    margin: 10px 0;
+}
+
+.sidebar nav a {
+    display: block;
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.sidebar nav a:hover {
+    background: white;
+    color: var(--accent-color);
+    padding-left: 24px;
+    box-shadow: var(--shadow);
+}
+
+.sidebar nav a.active {
+    background: var(--accent-color);
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+/* Right Content Panel */
+.content {
+    flex: 1;
+    background: var(--background);
+    padding: 60px 90px;
+    overflow-y: auto;
+    max-width: 100%;
+}
+
+main {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2.8em;
+    border-bottom: 4px solid var(--accent-color);
+    padding-bottom: 0.5em;
+    margin-top: 0;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 2.2em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.4em;
+}
+
+h3 { 
+    font-size: 1.7em; 
+}
+
+h4 { 
+    font-size: 1.4em; 
+}
+
+h5 { 
+    font-size: 1.2em; 
+}
+
+h6 { 
+    font-size: 1em; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+p {
+    margin: 1.3em 0;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Code Blocks */
+code {
+    font-family: 'Fira Code', monospace;
+    background: var(--surface);
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+    color: var(--secondary-color);
+}
+
+pre {
+    background: var(--surface);
+    padding: 24px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 2em 0;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    border: none;
+    color: var(--primary-color);
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 5px solid var(--accent-color);
+    margin: 2em 0;
+    padding: 16px 28px;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--surface);
+    border-radius: 0 6px 6px 0;
+    font-size: 1.05em;
+}
+
+blockquote::before {
+    content: '"';
+    font-size: 3em;
+    color: var(--accent-color);
+    opacity: 0.3;
+    position: absolute;
+    margin-left: -0.5em;
+    margin-top: -0.3em;
+    font-family: Georgia, serif;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2.5em 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95em;
+    box-shadow: var(--shadow);
+}
+
+table th,
+table td {
+    border: 1px solid var(--border-color);
+    padding: 14px 18px;
+    text-align: left;
+}
+
+table th {
+    background: var(--accent-color);
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+}
+
+table tr:nth-child(even) {
+    background: var(--surface);
+}
+
+table tr:hover {
+    background: #e8eef1;
+}
+
+/* Lists */
+ul, ol {
+    padding-left: 2em;
+    margin: 1.5em 0;
+}
+
+li {
+    margin: 0.8em 0;
+}
+
+ul li::marker {
+    color: var(--accent-color);
+}
+
+ol li::marker {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Links */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    padding-bottom: 1px;
+}
+
+a:hover {
+    border-bottom-color: var(--accent-color);
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 3.5em 0;
+}
+
+hr::after {
+    content: '§';
+    display: block;
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 1.5em;
+    margin-top: -0.75em;
+    background: white;
+    width: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 2.5em auto;
+    display: block;
+    border: 1px solid var(--border-color);
+    padding: 4px;
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+/* Custom Classes */
+.callout {
+    background: var(--surface);
+    padding: 24px 32px;
+    border-radius: 6px;
+    margin: 2em 0;
+    border: 2px solid var(--border-color);
+    border-left: 6px solid var(--accent-color);
+    box-shadow: var(--shadow);
+}
+
+.tip {
+    background: #d1ecf1;
+    padding: 20px 28px;
+    border-radius: 6px;
+    margin: 2em 0;
+    border-left: 6px solid #17a2b8;
+    color: #0c5460;
+}
+
+.tip::before {
+    content: '💡 Tip: ';
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: #17a2b8;
+}
+
+.warning {
+    background: #fff3cd;
+    padding: 20px 28px;
+    border-radius: 6px;
+    margin: 2em 0;
+    border-left: 6px solid #ffc107;
+    color: #856404;
+}
+
+.warning::before {
+    content: '⚠️ Warning: ';
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: #f59e0b;
+}
+
+.note {
+    background: #e7f1ff;
+    padding: 20px 28px;
+    border-radius: 6px;
+    margin: 2em 0;
+    border-left: 6px solid var(--accent-color);
+    color: var(--secondary-color);
+    font-size: 0.95em;
+}
+
+.note::before {
+    content: 'Note: ';
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-color);
+}
+
+.highlight-box {
+    background: var(--highlight-bg);
+    padding: 24px 32px;
+    border-radius: 6px;
+    margin: 2em 0;
+    border: 2px dashed #ffc107;
+}
+
+.quote-box {
+    background: #f8f9fa;
+    padding: 28px 36px;
+    border-radius: 6px;
+    margin: 2em 0;
+    font-style: italic;
+    font-size: 1.1em;
+    border-left: 8px solid var(--accent-color);
+    color: var(--secondary-color);
+    position: relative;
+}
+
+.alert {
+    background: #f8d7da;
+    padding: 20px 28px;
+    border-radius: 6px;
+    margin: 2em 0;
+    border-left: 6px solid #dc3545;
+    color: #721c24;
+}
+
+.alert::before {
+    content: '🚨 Alert: ';
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: #dc3545;
+}
+
+.success {
+    background: #d4edda;
+    padding: 20px 28px;
+    border-radius: 6px;
+    margin: 2em 0;
+    border-left: 6px solid #28a745;
+    color: #155724;
+}
+
+.success::before {
+    content: '✓ Success: ';
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: #28a745;
+}
+
+/* Span Classes */
+.highlight {
+    background: var(--highlight-bg);
+    padding: 2px 6px;
+    font-weight: 600;
+    border-bottom: 2px solid #ffc107;
+}
+
+.emphasis {
+    font-weight: 700;
+    color: var(--accent-color);
+    font-style: italic;
+}
+
+.subtle {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tag {
+    background: var(--surface);
+    color: var(--secondary-color);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    border: 1px solid var(--border-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.term {
+    font-style: italic;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.citation {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Math Display */
+.katex-display {
+    margin: 2.5em 0;
+    overflow-x: auto;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+/* Footnotes */
+.footnote {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+    padding-top: 2em;
+    margin-top: 3em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 3px solid var(--accent-color);
+    }
+    
+    .content {
+        padding: 40px 25px;
+    }
+    
+    p {
+        text-align: left;
+    }
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #bdc3c7;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+.content::-webkit-scrollbar-track {
+    background: var(--surface);
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}

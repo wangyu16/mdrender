@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CODESPACE_SETUP</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="../style/style_template1.css">
+  <!-- Prism.js theme - Tomorrow Night -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css"
+    rel="stylesheet" />
+
+</head>
+<body>
+<main>
+<h1>Codespace Configuration Guide</h1>
+<p>This document explains the Codespace setup for the mdrender project.</p>
+<h2>Overview</h2>
+<p>The mdrender project is a static website generator that converts Markdown files into a beautiful two-panel HTML website suitable for teaching materials, handouts, study guides, and research summaries.</p>
+<h2>Codespace Configuration</h2>
+<h3>DevContainer Setup</h3>
+<p>The project includes a <code>.devcontainer/devcontainer.json</code> configuration that:</p>
+<ol><li><strong>Base Image</strong>: Uses <code>mcr.microsoft.com/devcontainers/python:3.11</code></li></ol>
+<ul><li>Provides Python 3.11 environment</li><li>Includes common Python development tools</li></ul>
+<ol><li><strong>Features</strong>:</li></ol>
+<ul><li>Docker-in-Docker support for containerized workflows</li></ul>
+<ol><li><strong>VS Code Extensions</strong> (automatically installed):</li></ol>
+<ul><li><code>ms-python.python</code> - Python language support</li><li><code>esbenp.prettier-vscode</code> - Code formatting</li><li><code>ms-vscode-remote.remote-containers</code> - Remote container support</li></ul>
+<ol><li><strong>Post-Create Command</strong>:</li></ol>
+<ul><li>Automatically runs <code>pip install -r requirements.txt</code></li><li>Installs the <code>requests</code> library needed for API calls</li></ul>
+<h3>Alternative: Alpine Linux Container</h3>
+<p>If you're using an Alpine Linux container (as in the current environment):</p>
+<pre><code class="language-bash"># Install Python and required packages
+sudo apk add py3-pip py3-requests
+
+# Or install via pip
+python3 -m pip install -r requirements.txt</code></pre>
+<h2>Project Structure</h2>
+<pre><code>mdrender/
+├── .devcontainer/
+│   └── devcontainer.json       # Codespace configuration
+├── docs/                       # Generated website output
+│   ├── index.html             # Main page with navigation
+│   └── *.html                 # Individual content pages
+├── sources/                    # Markdown source files
+│   ├── index.md
+│   └── *.md
+├── style/                      # CSS themes
+│   └── style_template1.css    # Default two-panel theme
+├── scripts/
+│   └── generate_site.py       # Site generator script
+├── temp/
+│   └── demo.html              # API usage example
+├── requirements.txt           # Python dependencies
+└── README.md                  # Project documentation</code></pre>
+<h2>How It Works</h2>
+<h3>1. Markdown to HTML Conversion</h3>
+<p>The generator script (<code>scripts/generate_site.py</code>) uses a publicly available Cloudflare Workers API to convert Markdown to HTML:</p>
+<ul><li><strong>API URL</strong>: <code>https://markdown-render.fishdream-82.workers.dev/api/render</code></li><li><strong>Method</strong>: POST</li><li><strong>Payload</strong>: <code>{&quot;markdown&quot;: &quot;...&quot;, &quot;includeKatexCSS&quot;: false}</code></li><li><strong>Response</strong>: <code>{&quot;html&quot;: &quot;...&quot;}</code></li></ul>
+<h3>2. Two-Panel Layout</h3>
+<p>The generated website features:</p>
+<ul><li><strong>Left Sidebar</strong>: </li><li>Dark-themed navigation panel</li><li>Lists all source documents</li><li>Highlights active selection</li><li>Fixed width (280px) with scroll</li></ul>
+<ul><li><strong>Right Content Panel</strong>:</li><li>Clean white background</li><li>Displays selected content</li><li>Maximum width 900px for readability</li><li>Full KaTeX math support</li></ul>
+<h3>3. Dynamic Content Loading</h3>
+<p>The main <code>index.html</code> uses JavaScript to:</p>
+<ul><li>Load content files dynamically without page refresh</li><li>Update navigation highlight</li><li>Parse and extract main content from loaded pages</li></ul>
+<h2>Usage</h2>
+<h3>Generate the Website</h3>
+<pre><code class="language-bash"># Basic usage (uses defaults)
+python3 scripts/generate_site.py
+
+# Custom style theme
+python3 scripts/generate_site.py --style custom_theme.css
+
+# Custom API endpoint
+python3 scripts/generate_site.py --api-url https://your-api.com/render</code></pre>
+<h3>Preview the Website</h3>
+<pre><code class="language-bash"># Start a local web server
+cd docs
+python3 -m http.server 8000
+
+# Open in browser
+# http://localhost:8000/index.html</code></pre>
+<h3>Add New Content</h3>
+<ol><li>Create a new <code>.md</code> file in the <code>sources/</code> directory</li><li>Run the generator script</li><li>The new page will automatically appear in the navigation</li></ol>
+<h2>Customization</h2>
+<h3>Creating a New Style Theme</h3>
+<ol><li>Copy <code>style/style_template1.css</code> to a new file</li><li>Modify the CSS variables and styles:</li></ol>
+<ul><li><code>.sidebar</code> - Navigation panel styling</li><li><code>.content</code> - Main content area</li><li>Typography, colors, spacing</li></ul>
+<pre><code class="language-bash">   python3 scripts/generate_site.py --style your_theme.css</code></pre>
+<ol><li>Generate with your theme:</li></ol>
+<h3>Key CSS Classes</h3>
+<ul><li><code>.container</code> - Main flex container</li><li><code>.sidebar</code> - Left navigation panel</li><li><code>.content</code> - Right content area</li><li><code>nav a.active</code> - Active navigation link</li><li>Code blocks, tables, blockquotes have custom styling</li></ul>
+<h2>Dependencies</h2>
+<h3>Python Packages</h3>
+<ul><li><strong>requests</strong>: HTTP library for API calls</li><li>Used to POST markdown to the render API</li><li>Handles JSON payloads and responses</li></ul>
+<h3>External Resources</h3>
+<ul><li><strong>KaTeX CSS</strong>: Math rendering support</li><li>CDN: <code>https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css</code></li><li>Automatically included in generated pages</li></ul>
+<h2>Troubleshooting</h2>
+<h3>Issue: Module 'requests' not found</h3>
+<p><strong>Solution</strong>: Install dependencies</p>
+<pre><code class="language-bash">pip install -r requirements.txt
+# or
+sudo apk add py3-requests  # Alpine Linux</code></pre>
+<h3>Issue: Permission denied (Alpine)</h3>
+<p><strong>Solution</strong>: Use sudo for system package installation</p>
+<pre><code class="language-bash">sudo apk add py3-pip py3-requests</code></pre>
+<h3>Issue: API call fails</h3>
+<p><strong>Check</strong>:</p>
+<ol><li>Internet connectivity</li><li>API endpoint is accessible</li><li>Request timeout (default 30s)</li></ol>
+<h3>Issue: CSS not loading</h3>
+<p><strong>Check</strong>:</p>
+<ol><li>Relative path in <code>docs/*.html</code> points correctly to <code>../style/</code></li><li>Style file exists in <code>style/</code> directory</li><li>Browser developer console for 404 errors</li></ol>
+<h2>Best Practices</h2>
+<ol><li><strong>Organize Sources</strong>: Use subdirectories in <code>sources/</code> for better organization</li><li><strong>Meaningful Filenames</strong>: Use descriptive names (e.g., <code>lecture-01-intro.md</code>)</li><li><strong>Test Locally</strong>: Preview before deploying</li><li><strong>Version Control</strong>: Commit source files, optionally ignore <code>docs/</code></li><li><strong>Math Equations</strong>: Use KaTeX syntax for mathematical notation</li></ol>
+<h2>Deployment</h2>
+<p>The generated <code>docs/</code> folder contains static HTML files that can be deployed to:</p>
+<ul><li><strong>GitHub Pages</strong>: Enable in repository settings</li><li><strong>Netlify</strong>: Drag and drop the <code>docs/</code> folder</li><li><strong>Vercel</strong>: Deploy as a static site</li><li><strong>Any web server</strong>: Copy files to web root</li></ul>
+<h2>Future Enhancements</h2>
+<p>Potential improvements:</p>
+<ul><li>Search functionality across all pages</li><li>Dark mode toggle</li><li>PDF export of rendered pages</li><li>Custom navigation hierarchy</li><li>Tags and categories</li><li>Breadcrumb navigation</li></ul>
+<hr>
+<p>For more information, see <a href="README.md">README.md</a></p>
+</main>
+</body>
+</html>

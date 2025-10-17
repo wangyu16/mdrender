@@ -1,0 +1,470 @@
+/* Style Template 4 - Vibrant Colorful */
+
+/* CSS Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Nunito', system-ui, sans-serif;
+  line-height: 1.7;
+  color: #2d3748;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Two-Panel Container Layout */
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Left Sidebar (Navigation) */
+.sidebar {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: #2d3748;
+  padding: 30px 24px;
+  overflow-y: auto;
+  flex-shrink: 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  color: #667eea;
+  font-size: 1.6em;
+  font-weight: 800;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid #667eea;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebar nav ul {
+  list-style: none;
+}
+
+.sidebar nav li {
+  margin: 8px 0;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #4a5568;
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.sidebar nav a:hover {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  transform: translateX(8px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+}
+
+.sidebar nav a.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Right Content Panel */
+.content {
+  flex: 1;
+  background: white;
+  padding: 50px 80px;
+  overflow-y: auto;
+  max-width: 100%;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: 3em;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: 2.3em;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-image-slice: 1;
+  padding-bottom: 0.4em;
+}
+
+h3 {
+  font-size: 1.8em;
+  color: #4c51bf;
+}
+
+h4 {
+  font-size: 1.4em;
+  color: #5a67d8;
+}
+
+p {
+  margin: 1.4em 0;
+  color: #4a5568;
+}
+
+/* Code Blocks */
+code {
+  background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+pre {
+  background: linear-gradient(135deg, #434343 0%, #000000 100%);
+  padding: 24px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1.8em 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: 2px solid #667eea;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: #a5f3fc;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 5px solid #f093fb;
+  margin: 2em 0;
+  padding: 16px 24px;
+  color: #5a67d8;
+  font-style: italic;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 20%, #ffecd2 100%);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 16px rgba(240, 147, 251, 0.2);
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2.5em 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  border: 2px solid #e2e8f0;
+  padding: 16px 20px;
+  text-align: left;
+}
+
+table th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+table tr {
+  background: white;
+}
+
+table tr:nth-child(even) {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 10%, #ffecd2 100%);
+}
+
+table tr:hover {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 2.2em;
+  margin: 1.4em 0;
+}
+
+li {
+  margin: 0.7em 0;
+  color: #4a5568;
+}
+
+li::marker {
+  color: #667eea;
+  font-weight: bold;
+}
+
+/* Links */
+a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  background: linear-gradient(to bottom, transparent 50%, rgba(102, 126, 234, 0.2) 50%);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #764ba2;
+  background: linear-gradient(to bottom, transparent 50%, rgba(118, 75, 162, 0.3) 50%);
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  margin: 3.5em 0;
+  border-radius: 2px;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 2em 0;
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.3);
+  border: 4px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
+}
+
+/* Custom Classes - Vibrant Style */
+.callout {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  padding: 28px 32px;
+  border-radius: 16px;
+  margin: 2em 0;
+  border-left: 6px solid #667eea;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+}
+
+.tip {
+  background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+  padding: 22px 28px;
+  border-radius: 16px;
+  margin: 2em 0;
+  border-left: 6px solid #0ea5e9;
+  color: #0c4a6e;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.2);
+}
+
+.warning {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  padding: 22px 28px;
+  border-radius: 16px;
+  margin: 2em 0;
+  border-left: 6px solid #dc2626;
+  color: #7c2d12;
+  box-shadow: 0 8px 24px rgba(250, 112, 154, 0.3);
+}
+
+.note {
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  padding: 22px 28px;
+  border-radius: 16px;
+  margin: 2em 0;
+  font-size: 0.95em;
+  border: 2px solid #8b5cf6;
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.2);
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  padding: 28px 32px;
+  border-radius: 16px;
+  margin: 2em 0;
+  border: 3px solid #f59e0b;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+}
+
+.quote-box {
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  padding: 32px 36px;
+  border-radius: 16px;
+  margin: 2em 0;
+  font-style: italic;
+  font-size: 1.15em;
+  border-left: 8px solid #8b5cf6;
+  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.3);
+  color: #5b21b6;
+}
+
+.alert {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  padding: 22px 28px;
+  border-radius: 16px;
+  margin: 2em 0;
+  border-left: 6px solid #ef4444;
+  color: #991b1b;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
+}
+
+.success {
+  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+  padding: 22px 28px;
+  border-radius: 16px;
+  margin: 2em 0;
+  border-left: 6px solid #10b981;
+  color: #064e3b;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+/* Span Classes */
+.highlight {
+  background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(255, 216, 155, 0.4);
+}
+
+.emphasis {
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtle {
+  color: #a0aec0;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.badge {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tag {
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  color: #5b21b6;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.85em;
+  font-weight: 600;
+  border: 2px solid #8b5cf6;
+}
+
+.code-inline {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-family: "Cascadia Code", monospace;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Math Display */
+.katex-display {
+  margin: 2.5em 0;
+  overflow-x: auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(252, 182, 159, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content {
+    padding: 35px 25px;
+  }
+  
+  h1 {
+    font-size: 2.2em;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.content::-webkit-scrollbar-track {
+  background: #f7fafc;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 5px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}

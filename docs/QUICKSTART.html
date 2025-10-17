@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>QUICKSTART</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="../style/style_template1.css">
+  <!-- Prism.js theme - Tomorrow Night -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css"
+    rel="stylesheet" />
+
+</head>
+<body>
+<main>
+<h1>Quick Start Guide</h1>
+<h2>Prerequisites</h2>
+<p>Before you begin, you need to install Node.js, which includes npm (Node Package Manager).</p>
+<h3>Installing Node.js</h3>
+<ol><li><strong>Download Node.js:</strong></li></ol>
+<ul><li>Go to https://nodejs.org/</li><li>Download the LTS (Long Term Support) version</li><li>Run the installer and follow the installation wizard</li></ul>
+<ol><li><strong>Verify Installation:</strong></li></ol>
+<p>   Open a command prompt and run:</p>
+<pre><code class="language-bash">   node --version
+   npm --version</code></pre>
+<p>   You should see version numbers for both commands.</p>
+<h2>Setup Steps</h2>
+<pre><code class="language-bash">   npm install</code></pre>
+<ol><li><strong>Install Dependencies:</strong></li></ol>
+<pre><code class="language-bash">   npm test</code></pre>
+<ol><li><strong>Run Tests:</strong></li></ol>
+<pre><code class="language-bash">   npm run dev</code></pre>
+<ol><li><strong>Start Local Development Server:</strong></li></ol>
+<p>   Your function will be available at: http://localhost:8787</p>
+<ol><li><strong>Test the Function:</strong></li></ol>
+<pre><code class="language-bash">     curl -X POST http://localhost:8787/api/render -H &quot;Content-Type: application/json&quot; -d &quot;{\&quot;markdown\&quot;: \&quot;# Hello World\&quot;}&quot;</code></pre>
+<ul><li>Open <code>demo.html</code> in your browser</li><li>Or use curl:</li></ul>
+<h2>Project Structure</h2>
+<pre><code>markdown-render/
+├── src/
+│   ├── index.js      # Main serverless function handler
+│   ├── parser.js     # Markdown parser with extensible rules
+│   └── math.js       # KaTeX integration for math/chemical equations
+├── test/
+│   └── test.js       # Test suite
+├── demo.html         # Full featured demo
+├── simple-example.html  # Simple usage example
+├── package.json      # Project dependencies
+├── wrangler.toml     # Cloudflare Workers config
+├── vercel.json       # Vercel config
+├── README.md         # Project overview
+├── DEPLOYMENT.md     # Detailed deployment guide
+└── DENO_DEPLOY.md    # Deno Deploy instructions</code></pre>
+<h2>Features Overview</h2>
+<h3>Markdown Support</h3>
+<ul><li>✅ Headers (H1-H6)</li><li>✅ Bold, Italic, Bold+Italic</li><li>✅ Inline code and code blocks</li><li>✅ Links and images</li><li>✅ Unordered and ordered lists</li><li>✅ Tables</li><li>✅ Blockquotes</li><li>✅ Horizontal rules</li></ul>
+<h3>Math & Science</h3>
+<ul><li>✅ Inline math: <code>$E = mc^2$</code></li><li>✅ Block math: `</li></ul>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>∫</mo><mi>x</mi><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int x dx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.2222em;vertical-align:-0.8622em;"></span><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mord mathnormal">d</span><span class="mord mathnormal">x</span></span></span></span></span>
+<p>`</p>
+<ul><li>✅ Chemical equations: <code>$ce{H2O}$</code></li><li>✅ Matrices and complex equations</li></ul>
+<h3>Extensibility</h3>
+<ul><li>✅ Custom syntax rules (see <code>src/parser.js</code>)</li><li>✅ Easy to add new patterns</li><li>✅ Example rules included (highlight, underline)</li></ul>
+<h2>Usage Patterns</h2>
+<h3>Pattern 1: Direct HTML Integration</h3>
+<pre><code class="language-html">&lt;div id=&quot;content&quot; data-markdown&gt;
+# Your Markdown Here
+Math: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E = mc^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>
+&lt;/div&gt;
+&lt;script&gt;
+  // Fetch and render
+  fetch(&#039;YOUR_API_URL/api/render&#039;, {
+    method: &#039;POST&#039;,
+    body: JSON.stringify({ markdown: &#039;...&#039; })
+  });
+&lt;/script&gt;</code></pre>
+<h3>Pattern 2: Dynamic Content</h3>
+<pre><code class="language-javascript">async function renderMarkdown(text) {
+  const response = await fetch(&#039;YOUR_API_URL/api/render&#039;, {
+    method: &#039;POST&#039;,
+    headers: { &#039;Content-Type&#039;: &#039;application/json&#039; },
+    body: JSON.stringify({ markdown: text })
+  });
+  const { html } = await response.json();
+  return html;
+}</code></pre>
+<h3>Pattern 3: Static Site Generation</h3>
+<p>Pre-render markdown at build time and serve static HTML.</p>
+<h2>Customization Examples</h2>
+<h3>Adding Custom Syntax</h3>
+<p>Edit <code>src/parser.js</code>:</p>
+<pre><code class="language-javascript">export const customRules = [
+  // Strikethrough: ~~text~~
+  {
+    name: &#039;strikethrough&#039;,
+    pattern: /~~(.+?)~~/g,
+    replace: &#039;&lt;del&gt;$1&lt;/del&gt;&#039;
+  },
+  // Spoiler: ||text||
+  {
+    name: &#039;spoiler&#039;,
+    pattern: /\|\|(.+?)\|\|/g,
+    replace: &#039;&lt;span class=&quot;spoiler&quot;&gt;$1&lt;/span&gt;&#039;
+  },
+  // Custom alert: !!! text
+  {
+    name: &#039;alert&#039;,
+    pattern: /^!!! (.+)$/gm,
+    replace: &#039;&lt;div class=&quot;alert&quot;&gt;$1&lt;/div&gt;&#039;
+  }
+];</code></pre>
+<h3>Adding Custom Math Macros</h3>
+<p>Edit <code>src/math.js</code> to add KaTeX macros:</p>
+<pre><code class="language-javascript">katex.renderToString(equation, {
+  displayMode: true,
+  macros: {
+    &quot;\\RR&quot;: &quot;\\mathbb{R}&quot;,
+    &quot;\\NN&quot;: &quot;\\mathbb{N}&quot;
+  }
+});</code></pre>
+<h2>Next Steps</h2>
+<ol><li><strong>Install Node.js</strong> (if not already installed)</li><li><strong>Run <code>npm install</code></strong> to install dependencies</li><li><strong>Run <code>npm test</code></strong> to verify everything works</li><li><strong>Start development</strong> with <code>npm run dev</code></li><li><strong>Deploy</strong> to your preferred platform (see DEPLOYMENT.md)</li></ol>
+<h2>Getting Help</h2>
+<ul><li>Check <code>README.md</code> for feature overview</li><li>Check <code>DEPLOYMENT.md</code> for deployment instructions</li><li>Review <code>demo.html</code> for usage examples</li><li>Look at <code>test/test.js</code> for API examples</li></ul>
+<h2>Common Issues</h2>
+<h3>"npm is not recognized"</h3>
+<ul><li>Install Node.js from https://nodejs.org/</li></ul>
+<h3>"Module not found"</h3>
+<ul><li>Run <code>npm install</code> to install dependencies</li></ul>
+<h3>"Port already in use"</h3>
+<ul><li>Change the port in wrangler.toml or kill the process using port 8787</li></ul>
+<h3>Math not rendering</h3>
+<ul><li>Make sure KaTeX CSS is included in your HTML</li><li>Check browser console for errors</li><li>Verify LaTeX syntax is correct</li></ul>
+<h2>License</h2>
+<p>MIT - Feel free to use in your projects!</p>
+</main>
+</body>
+</html>

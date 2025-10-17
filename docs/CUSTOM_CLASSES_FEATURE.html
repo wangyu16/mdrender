@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CUSTOM_CLASSES_FEATURE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="../style/style_template1.css">
+  <!-- Prism.js theme - Tomorrow Night -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css"
+    rel="stylesheet" />
+
+</head>
+<body>
+<main>
+<h1>Custom Classes Feature Documentation</h1>
+<h2>Overview</h2>
+<p>The markdown renderer now supports creating HTML div and span elements with custom CSS classes directly in your markdown. This allows you to apply custom styling and semantic meaning to your content without writing raw HTML.</p>
+<h2>Features</h2>
+<h3>1. Div Blocks with Classes</h3>
+<p>Create block-level containers with custom CSS classes.</p>
+<h3>2. Span Elements with Classes</h3>
+<p>Create inline elements with custom CSS classes.</p>
+<h2>Syntax</h2>
+<h3>Div Block Syntax</h3>
+<div class="CLASSNAME">content here
+can be multi-line
+supports all markdown formatting</div>
+<pre><code class="language-markdown"></code></pre>
+<p><strong>Renders to:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;CLASSNAME&quot;&gt;content here can be multi-line supports all markdown formatting&lt;/div&gt;</code></pre>
+<h3>Span Inline Syntax</h3>
+<pre><code class="language-markdown">{.CLASSNAME}content{/}</code></pre>
+<p><strong>Renders to:</strong></p>
+<pre><code class="language-html">&lt;span class=&quot;CLASSNAME&quot;&gt;content&lt;/span&gt;</code></pre>
+<h2>Examples</h2>
+<h3>Alert Boxes</h3>
+<h4>Markdown:</h4>
+<div class="alert">⚠️ This is an important alert message!</div>
+<pre><code class="language-markdown"></code></pre>
+<h4>HTML Output:</h4>
+<pre><code class="language-html">&lt;div class=&quot;alert&quot;&gt;⚠️ This is an important alert message!&lt;/div&gt;</code></pre>
+<h3>Colored Text</h3>
+<h4>Markdown:</h4>
+<pre><code class="language-markdown">Status: {.red}Error{/}, {.blue}Processing{/}, {.green}Success{/}</code></pre>
+<h4>HTML Output:</h4>
+<pre><code class="language-html">&lt;p&gt;Status: &lt;span class=&quot;red&quot;&gt;Error&lt;/span&gt;, &lt;span class=&quot;blue&quot;&gt;Processing&lt;/span&gt;, &lt;span class=&quot;green&quot;&gt;Success&lt;/span&gt;&lt;/p&gt;</code></pre>
+<h3>Card Components</h3>
+<h4>Markdown:</h4>
+<div class="card">## Welcome!
+This is a <strong>card</strong> component.
+It supports <em>all</em> markdown formatting.</div>
+<pre><code class="language-markdown"></code></pre>
+<h4>HTML Output:</h4>
+<pre><code class="language-html">&lt;div class=&quot;card&quot;&gt;## Welcome! This is a &lt;strong&gt;card&lt;/strong&gt; component. It supports &lt;em&gt;all&lt;/em&gt; markdown formatting.&lt;/div&gt;</code></pre>
+<h2>Use Cases</h2>
+<h3>1. Alert/Warning Messages</h3>
+<div class="warning">⚠️ Warning: This action cannot be undone!</div>
+<div class="success">✅ Success! Your changes have been saved.</div>
+<div class="info">ℹ️ Pro tip: Use keyboard shortcuts to save time!</div>
+<pre><code class="language-markdown">
+</code></pre>
+<h3>2. Colored Inline Text</h3>
+<pre><code class="language-markdown">The status is {.green}active{/} and the priority is {.red}high{/}.</code></pre>
+<h3>3. Badges and Labels</h3>
+<pre><code class="language-markdown">Version {.badge}2.0{/} is now available!
+
+{.label-new}NEW{/} Feature added in this release.</code></pre>
+<h3>4. Custom Containers</h3>
+<div class="container">This is a custom container with specific styling.</div>
+<div class="sidebar">This could be a sidebar element.</div>
+<div class="footer">Footer content goes here.</div>
+<pre><code class="language-markdown">
+</code></pre>
+<h3>5. Highlighting Important Text</h3>
+<pre><code class="language-markdown">This is {.highlight}very important{/} information that you should read carefully.</code></pre>
+<h3>6. Combined Usage</h3>
+<div class="card">## Product Features
+
+- <span class="green">Fast</span> performance
+- <span class="blue">Secure</span> by default
+- <span class="red">Simple</span> to use
+
+Try it today! <span class="badge">NEW</span></div>
+<pre><code class="language-markdown"></code></pre>
+<h2>Class Name Rules</h2>
+<p>Valid class names must:</p>
+<ul><li>Contain only letters (a-z, A-Z), numbers (0-9), hyphens (-), and underscores (_)</li><li>Examples: <code>alert</code>, <code>my-class</code>, <code>info_box</code>, <code>class123</code></li></ul>
+<p>Invalid class names:</p>
+<ul><li>Cannot contain spaces: <code>my class</code> ❌</li><li>Cannot contain special characters: <code>my@class</code> ❌</li><li>Cannot start with numbers: <code>123class</code> (technically valid in HTML5, but avoid)</li></ul>
+<h2>CSS Styling</h2>
+<p>To style your custom classes, add CSS to your HTML page:</p>
+<pre><code class="language-html">&lt;style&gt;
+    .alert {
+        background: #fff3cd;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 4px solid #ffc107;
+        color: #856404;
+    }
+    
+    .warning {
+        background: #f8d7da;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 4px solid #dc3545;
+        color: #721c24;
+    }
+    
+    .success {
+        background: #d4edda;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 4px solid #28a745;
+        color: #155724;
+    }
+    
+    .highlight {
+        background: yellow;
+        padding: 2px 4px;
+        font-weight: bold;
+    }
+    
+    .red {
+        color: #dc3545;
+        font-weight: bold;
+    }
+    
+    .blue {
+        color: #007bff;
+        font-weight: bold;
+    }
+    
+    .green {
+        color: #28a745;
+        font-weight: bold;
+    }
+    
+    .badge {
+        background: #6c757d;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+&lt;/style&gt;</code></pre>
+<h2>Nesting</h2>
+<p>You can nest span elements inside div blocks:</p>
+<div class="container">This has <span class="red">red text</span> and <span class="blue">blue text</span>.
+You can mix <span class="highlight">highlighted</span> content too!</div>
+<pre><code class="language-markdown"></code></pre>
+<h2>Multi-line Content</h2>
+<p>Div blocks support multi-line content with full markdown:</p>
+<div class="card"># Heading
+
+This is a paragraph with <strong>bold</strong> and <em>italic</em> text.
+
+- List item 1
+- List item 2
+
+<a href="https://example.com">Link</a></div>
+<pre><code class="language-markdown"></code></pre>
+<h2>Technical Implementation</h2>
+<h3>Location</h3>
+<p>Implemented in <code>/src/parser.js</code>:</p>
+<p><strong>Span with class (inline):</strong></p>
+<ul><li>Added to <code>customRules</code> array</li><li>Pattern: <code>/{.([a-zA-Z0-9_-]+)}(.+?){/}/g</code></li><li>Line ~27</li></ul>
+<p><strong>Div with class (block-level):</strong></p>
+<ul><li>Added to <code>parseMarkdown</code> function</li><li>Handles block detection and parsing</li><li>Lines ~171-207</li><li>Cleanup at end of file: Lines ~369-372</li></ul>
+<h3>Parsing Logic</h3>
+<h4>Div Blocks:</h4>
+<ol><li><strong>Opening tag detection</strong>: Matches <code>:::CLASSNAME</code> pattern</li><li><strong>Content accumulation</strong>: Collects all lines until closing tag</li><li><strong>Closing tag detection</strong>: Matches <code>:::</code> pattern</li><li><strong>Inline parsing</strong>: Processes markdown within content</li><li><strong>HTML generation</strong>: Creates <code>&lt;div class=&quot;CLASSNAME&quot;&gt;content&lt;/div&gt;</code></li></ol>
+<h4>Span Elements:</h4>
+<ol><li><strong>Pattern matching</strong>: Uses regex to find <code>{.CLASSNAME}content{/}</code></li><li><strong>Extraction</strong>: Captures class name and content</li><li><strong>Replacement</strong>: Replaces with <code>&lt;span class=&quot;CLASSNAME&quot;&gt;content&lt;/span&gt;</code></li></ol>
+<h2>Browser Compatibility</h2>
+<p>✅ All modern browsers support standard HTML div and span elements:</p>
+<ul><li>Chrome/Edge (all versions)</li><li>Firefox (all versions)</li><li>Safari (all versions)</li><li>Mobile browsers</li></ul>
+<h2>Testing</h2>
+<h3>Automated Tests</h3>
+<p>Run the test suite:</p>
+<pre><code class="language-bash">npm test</code></pre>
+<p>Tests include:</p>
+<ul><li>✅ Span with class</li><li>✅ Div with class (single line)</li><li>✅ Div with class (multi-line)</li><li>✅ Div with inline markdown</li><li>✅ Nested span in div</li></ul>
+<h3>Visual Testing</h3>
+<p>Open the demo page:</p>
+<pre><code class="language-bash">open custom-classes-demo.html</code></pre>
+<h3>Manual Testing</h3>
+<pre><code class="language-javascript">import { parseMarkdown } from &#039;./src/parser.js&#039;;
+
+// Test span
+const html1 = parseMarkdown(&#039;This is {.red}red{/} text&#039;);
+console.log(html1); // Should include &lt;span class=&quot;red&quot;&gt;red&lt;/span&gt;
+
+// Test div
+const html2 = parseMarkdown(&#039;:::alert\nWarning message\n:::&#039;);
+console.log(html2); // Should include &lt;div class=&quot;alert&quot;&gt;Warning message&lt;/div&gt;</code></pre>
+<h2>Common Patterns</h2>
+<h3>Bootstrap-style Alerts</h3>
+<div class="alert-primary">Primary alert</div>
+<div class="alert-success">Success alert</div>
+<div class="alert-danger">Danger alert</div>
+<div class="alert-warning">Warning alert</div>
+<pre><code class="language-markdown">
+
+</code></pre>
+<h3>Semantic HTML</h3>
+<div class="article">Main article content</div>
+<div class="aside">Sidebar content</div>
+<div class="section">Section content</div>
+<pre><code class="language-markdown">
+</code></pre>
+<h3>Custom Components</h3>
+<div class="hero"># Welcome to Our Site
+<span class="lead">The best solution for your needs</span></div>
+<div class="features">- <span class="icon-check">Feature 1</span>
+- <span class="icon-check">Feature 2</span>
+- <span class="icon-check">Feature 3</span></div>
+<pre><code class="language-markdown"></code></pre>
+<h2>Limitations</h2>
+<ol><li><strong>No attributes beyond class</strong>: Currently only supports class names, not id, style, or other attributes</li><li><strong>Single class only</strong>: Cannot add multiple classes (e.g., <code>:::class1 class2:::</code> not supported)</li><li><strong>No self-closing</strong>: Div blocks must have both opening <code>:::CLASS</code> and closing <code>:::</code></li><li><strong>Class name restrictions</strong>: Must match pattern <code>[a-zA-Z0-9_-]+</code></li></ol>
+<h2>Future Enhancements</h2>
+<p>Potential improvements for future versions:</p>
+<ol><li><strong>Multiple classes</strong>: <code>:::alert warning:::</code> or <code>{.red bold}text{/}</code></li><li><strong>ID support</strong>: <code>:::#myid.myclass:::</code></li><li><strong>Data attributes</strong>: <code>:::alert data-type=&quot;warning&quot;:::</code></li><li><strong>Inline styles</strong>: <code>{.red style=&quot;font-size:20px&quot;}text{/}</code></li><li><strong>Shorthand syntax</strong>: <code>:::alert-warning:::</code> expands to <code>:::alert warning:::</code></li></ol>
+<h2>Migration from Raw HTML</h2>
+<h3>Before (Raw HTML):</h3>
+<pre><code class="language-html">&lt;div class=&quot;alert&quot;&gt;Warning message&lt;/div&gt;
+&lt;span class=&quot;badge&quot;&gt;NEW&lt;/span&gt;</code></pre>
+<h3>After (Markdown):</h3>
+<div class="alert">Warning message</div>
+<pre><code class="language-markdown">
+{.badge}NEW{/}</code></pre>
+<h2>Best Practices</h2>
+<h3>✅ DO:</h3>
+<ul><li>Use semantic class names (<code>alert</code>, <code>warning</code>, <code>success</code>)</li><li>Define CSS styles for your classes</li><li>Keep class names short and descriptive</li><li>Use div blocks for multi-line content</li><li>Use span for inline content</li></ul>
+<h3>❌ DON'T:</h3>
+<ul><li>Don't use spaces in class names</li><li>Don't forget the closing <code>:::</code> or <code>{/}</code></li><li>Don't nest div blocks (not currently supported)</li><li>Don't mix with raw HTML <code>&lt;div&gt;</code> tags unnecessarily</li></ul>
+<h2>Examples in Context</h2>
+<h3>Blog Post with Alerts</h3>
+<div class="info">This guide assumes you have an API key. If not, <a href="signup">sign up here</a>.</div>
+<div class="code">npm install our-api</div>
+<div class="warning">⚠️ Never commit your API key to version control!</div>
+<pre><code class="language-markdown"># How to Use Our API
+
+
+## Getting Started
+
+First, install the library:
+
+
+
+## Basic Usage
+
+Here&#039;s a simple example with {.highlight}highlighted{/} important parts.</code></pre>
+<h3>Documentation with Color-coded Text</h3>
+<pre><code class="language-markdown"># Status Codes
+
+- {.green}200 OK{/} - Request succeeded
+- {.blue}301 Moved{/} - Resource moved permanently
+- {.yellow}401 Unauthorized{/} - Authentication required
+- {.red}500 Error{/} - Server error</code></pre>
+<h3>Product Features</h3>
+<div class="card">## Premium Plan <span class="badge">Popular</span>
+
+- <span class="green">✓</span> Unlimited storage
+- <span class="green">✓</span> 24/7 support
+- <span class="green">✓</span> Advanced features
+
+<span class="price">$29/month</span></div>
+<pre><code class="language-markdown"></code></pre>
+<h2>API Usage</h2>
+<h3>Client-Side</h3>
+<pre><code class="language-javascript">import { parseMarkdown } from &#039;./src/parser.js&#039;;
+
+const markdown = `:::alert
+This is an alert
+
+Text with {.red}color{/}`;
+
+const html = parseMarkdown(markdown);
+document.getElementById(&#039;content&#039;).innerHTML = html;</code></pre>
+<h3>Server-Side (Cloudflare Workers)</h3>
+<pre><code class="language-javascript">// POST request
+{
+  &quot;markdown&quot;: &quot;:::warning\nImportant message\n:::\n\nWith {.highlight}highlighted{/} text&quot;
+}
+
+// Response
+{
+  &quot;html&quot;: &quot;&lt;div class=\&quot;warning\&quot;&gt;Important message&lt;/div&gt;\n&lt;p&gt;With &lt;span class=\&quot;highlight\&quot;&gt;highlighted&lt;/span&gt; text&lt;/p&gt;&quot;
+}</code></pre>
+<h2>Support</h2>
+<p>If you encounter issues:</p>
+<ol><li>Verify syntax matches the pattern exactly</li><li>Check that class names are valid (alphanumeric, hyphens, underscores)</li><li>Ensure opening and closing tags match</li><li>Test with <code>custom-classes-demo.html</code></li><li>Run <code>npm test</code> to verify functionality</li></ol>
+<hr>
+<p><strong>Version</strong>: 1.0.0  </p>
+<p><strong>Last Updated</strong>: October 17, 2025  </p>
+<p><strong>Feature Status</strong>: ✅ Production Ready</p>
+</main>
+</body>
+</html>

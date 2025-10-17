@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>STYLE_TEMPLATES_GUIDE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="../style/style_template1.css">
+  <!-- Prism.js theme - Tomorrow Night -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css"
+    rel="stylesheet" />
+
+</head>
+<body>
+<main>
+<h1>Style Templates Comparison Guide</h1>
+<p>This guide compares all five available style templates for the mdrender static site generator.</p>
+<h2>Quick Reference Table</h2>
+<table><thead><tr><th>Template</th><th>File Name</th><th>Style</th><th>Best For</th><th>Color Scheme</th></tr></thead><tbody><tr><td><strong>Template 1</strong></td><td><code>style_template1.css</code></td><td>Two-Panel Professional</td><td>Technical docs, tutorials</td><td>Blue on dark gray</td></tr><tr><td><strong>Template 2</strong></td><td><code>style_template2_minimalist.css</code></td><td>Minimalist Clean</td><td>Essays, blogs, long-form</td><td>Black, white, minimal</td></tr><tr><td><strong>Template 3</strong></td><td><code>style_template3_dark.css</code></td><td>Dark Mode Professional</td><td>Code docs, dev resources</td><td>Blue gradients on black</td></tr><tr><td><strong>Template 4</strong></td><td><code>style_template4_vibrant.css</code></td><td>Vibrant Colorful</td><td>Creative content, portfolios</td><td>Purple/pink gradients</td></tr><tr><td><strong>Template 5</strong></td><td><code>style_template5_academic.css</code></td><td>Academic Professional</td><td>Research papers, formal docs</td><td>Navy and red accents</td></tr></tbody></table>
+<h2>Template Details</h2>
+<h3>Template 1: Two-Panel Professional (Default)</h3>
+<p><strong>File:</strong> <code>style_template1.css</code></p>
+<p><strong>Characteristics:</strong></p>
+<ul><li>Clean, modern two-panel layout</li><li>Dark sidebar (#2c3e50) with light content area</li><li>Blue accent color (#3498db)</li><li>Sans-serif fonts (system fonts)</li><li>Professional and approachable</li></ul>
+<p><strong>Use Cases:</strong></p>
+<ul><li>Software documentation</li><li>Technical tutorials</li><li>Product guides</li><li>Training materials</li></ul>
+<p><strong>Custom Classes:</strong></p>
+<ul><li>Colored left borders on callout boxes</li><li>Subtle backgrounds with shadows</li><li>Blue active navigation highlight</li></ul>
+<hr>
+<h3>Template 2: Minimalist Clean</h3>
+<p><strong>File:</strong> <code>style_template2_minimalist.css</code></p>
+<p><strong>Characteristics:</strong></p>
+<ul><li>Ultra-minimal aesthetic</li><li>Light gray sidebar (#fafafa) with thin border</li><li>Black and white primary palette</li><li>Subtle hover effects</li><li>Inter/system font stack</li><li>Maximum readability focus</li></ul>
+<p><strong>Use Cases:</strong></p>
+<ul><li>Blog posts</li><li>Essays and articles</li><li>Long-form content</li><li>Distraction-free reading</li></ul>
+<p><strong>Custom Classes:</strong></p>
+<ul><li>Minimal borders and backgrounds</li><li>Understated accent colors</li><li>Clean, flat design elements</li></ul>
+<hr>
+<h3>Template 3: Dark Mode Professional</h3>
+<p><strong>File:</strong> <code>style_template3_dark.css</code></p>
+<p><strong>Characteristics:</strong></p>
+<ul><li>Full dark mode (#0a0a0a background)</li><li>Blue gradient accents</li><li>High contrast for readability</li><li>Fira Sans font family</li><li>Glowing effects and shadows</li><li>Code-friendly styling</li></ul>
+<p><strong>Use Cases:</strong></p>
+<ul><li>Developer documentation</li><li>Code tutorials</li><li>Technical blogs</li><li>Late-night reading</li></ul>
+<p><strong>Custom Classes:</strong></p>
+<ul><li>Gradient borders and backgrounds</li><li>Vibrant accent colors on dark</li><li>Enhanced code block styling</li><li>Glowing hover effects</li></ul>
+<hr>
+<h3>Template 4: Vibrant Colorful</h3>
+<p><strong>File:</strong> <code>style_template4_vibrant.css</code></p>
+<p><strong>Characteristics:</strong></p>
+<ul><li>Purple/pink gradient themes</li><li>Frosted glass sidebar effect</li><li>Multiple gradient applications</li><li>Poppins/Nunito fonts</li><li>Playful and energetic</li><li>High visual impact</li></ul>
+<p><strong>Use Cases:</strong></p>
+<ul><li>Creative portfolios</li><li>Design showcases</li><li>Marketing materials</li><li>Educational content for younger audiences</li></ul>
+<p><strong>Custom Classes:</strong></p>
+<ul><li>Multiple gradient backgrounds</li><li>Rainbow-like color palette</li><li>Floating effects and shadows</li><li>Bold, eye-catching design</li></ul>
+<hr>
+<h3>Template 5: Academic Professional</h3>
+<p><strong>File:</strong> <code>style_template5_academic.css</code></p>
+<p><strong>Characteristics:</strong></p>
+<ul><li>Traditional scholarly appearance</li><li>Georgia serif fonts for body text</li><li>Navy (#16213e) and red (#e94560) accents</li><li>Formal typography</li><li>Citation-friendly styles</li><li>Print-like aesthetics</li></ul>
+<p><strong>Use Cases:</strong></p>
+<ul><li>Research papers</li><li>Academic writing</li><li>Formal documentation</li><li>Educational materials</li><li>Conference papers</li></ul>
+<p><strong>Custom Classes:</strong></p>
+<ul><li>Automatic "Note:", "Warning:" prefixes</li><li>Serif quote styling</li><li>Section markers (§)</li><li>Academic color palette</li></ul>
+<h2>Custom Classes Support</h2>
+<p>All templates support the following custom classes:</p>
+<h3>Div Block Classes</h3>
+<table><thead><tr><th>Class</th><th>Purpose</th><th>Visual Style</th></tr></thead><tbody><tr><td><code>.callout</code></td><td>Important information</td><td>Bordered box with distinct background</td></tr><tr><td><code>.tip</code></td><td>Helpful hints</td><td>Light blue/cyan themed</td></tr><tr><td><code>.warning</code></td><td>Cautions</td><td>Yellow/orange themed</td></tr><tr><td><code>.note</code></td><td>Supplementary info</td><td>Neutral themed</td></tr><tr><td><code>.highlight-box</code></td><td>Featured content</td><td>Bright/prominent styling</td></tr><tr><td><code>.quote-box</code></td><td>Quotations</td><td>Italic, styled borders</td></tr><tr><td><code>.alert</code></td><td>Urgent messages</td><td>Red/error themed</td></tr><tr><td><code>.success</code></td><td>Positive feedback</td><td>Green themed</td></tr></tbody></table>
+<h3>Span Inline Classes</h3>
+<table><thead><tr><th>Class</th><th>Purpose</th><th>Visual Style</th></tr></thead><tbody><tr><td><code>.highlight</code></td><td>Text highlighting</td><td>Bright background</td></tr><tr><td><code>.emphasis</code></td><td>Strong emphasis</td><td>Bold, themed color</td></tr><tr><td><code>.subtle</code></td><td>De-emphasized text</td><td>Muted gray</td></tr><tr><td><code>.badge</code></td><td>Status labels</td><td>Pill-shaped, bold</td></tr><tr><td><code>.tag</code></td><td>Categories</td><td>Light background, border</td></tr></tbody></table>
+<h2>Choosing the Right Template</h2>
+<h3>For Technical Documentation</h3>
+<ul><li><strong>Best:</strong> Template 1 (Professional) or Template 3 (Dark)</li><li><strong>Why:</strong> Clear structure, code-friendly, familiar layout</li></ul>
+<h3>For Academic Writing</h3>
+<ul><li><strong>Best:</strong> Template 5 (Academic)</li><li><strong>Why:</strong> Traditional typography, citation support, formal appearance</li></ul>
+<h3>For Creative Content</h3>
+<ul><li><strong>Best:</strong> Template 4 (Vibrant)</li><li><strong>Why:</strong> Eye-catching, modern, engaging visuals</li></ul>
+<h3>For Long-Form Reading</h3>
+<ul><li><strong>Best:</strong> Template 2 (Minimalist)</li><li><strong>Why:</strong> Distraction-free, maximum readability, clean design</li></ul>
+<h3>For Developer Resources</h3>
+<ul><li><strong>Best:</strong> Template 3 (Dark)</li><li><strong>Why:</strong> Dark mode, syntax highlighting friendly, modern aesthetic</li></ul>
+<h2>How to Use Different Templates</h2>
+<h3>Command Line</h3>
+<pre><code class="language-bash"># Default template (Template 1)
+python3 scripts/generate_site.py
+
+# Minimalist template
+python3 scripts/generate_site.py --style style_template2_minimalist.css
+
+# Dark mode template
+python3 scripts/generate_site.py --style style_template3_dark.css
+
+# Vibrant template
+python3 scripts/generate_site.py --style style_template4_vibrant.css
+
+# Academic template
+python3 scripts/generate_site.py --style style_template5_academic.css</code></pre>
+<h3>Switching Templates</h3>
+<p>To change your site's appearance:</p>
+<ol><li>Regenerate with the desired template</li><li>All pages will use the new styling</li><li>Custom classes adapt automatically</li><li>No markdown changes needed!</li></ol>
+<h2>Customizing Templates</h2>
+<p>Each template can be customized by editing the CSS file in the <code>style/</code> directory:</p>
+<ol><li>Copy a template file (e.g., <code>style_template1.css</code>)</li><li>Rename it (e.g., <code>style_my_custom.css</code>)</li><li>Modify colors, fonts, spacing as needed</li><li>Generate with <code>--style style_my_custom.css</code></li></ol>
+<h3>Key Variables to Customize</h3>
+<ul><li><strong>Sidebar colors:</strong> <code>.sidebar { background: ... }</code></li><li><strong>Accent colors:</strong> <code>.sidebar nav a.active { background: ... }</code></li><li><strong>Fonts:</strong> <code>body { font-family: ... }</code></li><li><strong>Content width:</strong> <code>main { max-width: ... }</code></li><li><strong>Custom class colors:</strong> <code>.callout</code>, <code>.tip</code>, etc.</li></ul>
+<h2>Performance Notes</h2>
+<p>All templates:</p>
+<ul><li>Use system fonts (no external font loading)</li><li>Minimal CSS size (< 10KB each)</li><li>No JavaScript required</li><li>Mobile responsive</li><li>Print-friendly</li></ul>
+<h2>Browser Compatibility</h2>
+<p>All templates support:</p>
+<ul><li>Chrome/Edge (latest)</li><li>Firefox (latest)</li><li>Safari (latest)</li><li>Mobile browsers</li><li>Graceful degradation for older browsers</li></ul>
+<hr>
+<p><strong>Need help choosing?</strong> Start with Template 1 (default) and experiment with others until you find your perfect match!</p>
+</main>
+</body>
+</html>
