@@ -15,19 +15,48 @@ import json
 import argparse
 from pathlib import Path
 import requests
+import urllib.request
 
 
 HERE = Path(__file__).resolve().parent.parent
 SOURCES = HERE / "sources"
 STYLE_DIR = HERE / "docs/style"
 DOCS = HERE / "docs"
+PRISM_DIR = DOCS / "prism"
 
 # Cloudflare Workers API - publicly available
 API_URL = "https://markdown-render.fishdream-82.workers.dev/api/render"
 
+# Prism.js CDN resources
+PRISM_RESOURCES = {
+    "prism-tomorrow.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css",
+    "prism-line-numbers.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css",
+    "prism-toolbar.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css",
+}
+
 
 def find_markdown_files(src: Path):
     return sorted(p for p in src.glob("**/*.md") if p.is_file())
+
+
+def download_prism_resources():
+    """Download Prism.js CSS files locally to avoid CDN issues with GitHub Pages."""
+    PRISM_DIR.mkdir(parents=True, exist_ok=True)
+    
+    for filename, url in PRISM_RESOURCES.items():
+        filepath = PRISM_DIR / filename
+        
+        # Skip if already downloaded
+        if filepath.exists():
+            print(f"Prism resource already exists: {filename}")
+            continue
+        
+        try:
+            print(f"Downloading {filename}...")
+            urllib.request.urlretrieve(url, filepath)
+            print(f"Downloaded: {filepath}")
+        except Exception as e:
+            print(f"Warning: Failed to download {filename}: {e}", file=sys.stderr)
 
 
 def call_render_api(api_url: str, markdown: str):
@@ -52,13 +81,11 @@ def make_page(title: str, body_html: str, style_href: str = None):
   {katex_css}
   {style_link}
   <!-- Prism.js theme - Tomorrow Night -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <link href="prism/prism-tomorrow.min.css" rel="stylesheet" />
 
   <!-- Prism.js plugins -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
-    rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css"
-    rel="stylesheet" />
+  <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
+  <link href="prism/prism-toolbar.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -286,6 +313,9 @@ def main():
         sys.exit(2)
 
     DOCS.mkdir(parents=True, exist_ok=True)
+    
+    # Download Prism.js CSS files locally
+    download_prism_resources()
 
     md_files = find_markdown_files(SOURCES)
     if not md_files:
