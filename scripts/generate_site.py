@@ -29,7 +29,7 @@ API_URL = "https://markdown-render.fishdream-82.workers.dev/api/render"
 
 # Prism.js CDN resources
 PRISM_RESOURCES = {
-    "prism-tomorrow.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css",
+    "prism.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css",
     "prism-line-numbers.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css",
     "prism-toolbar.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css",
     "prism.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
@@ -98,8 +98,8 @@ def make_page(title: str, body_html: str, style_href: str = None):
   <title>{title}</title>
   {katex_css}
   {style_link}
-  <!-- Prism.js theme - Tomorrow Night -->
-  <link href="prism/prism-tomorrow.min.css" rel="stylesheet" />
+  <!-- Prism.js default theme -->
+  <link href="prism/prism.min.css" rel="stylesheet" />
 
   <!-- Prism.js plugins -->
   <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
@@ -131,8 +131,8 @@ def make_index_page(file_list, style_href: str = None):
     """Generate the main index page with two-panel layout and theme selector."""
     style_link = f'<link id="theme-stylesheet" rel="stylesheet" href="{style_href}">' if style_href else ""
     katex_css = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">'
-    prism_css = """<!-- Prism.js theme - Tomorrow Night -->
-  <link href="prism/prism-tomorrow.min.css" rel="stylesheet" />
+    prism_css = """<!-- Prism.js default theme -->
+  <link href="prism/prism.min.css" rel="stylesheet" />
 
   <!-- Prism.js plugins -->
   <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
