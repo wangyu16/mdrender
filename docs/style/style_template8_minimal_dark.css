@@ -136,32 +136,7 @@ p {
     margin: 1.4em 0;
 }
 
-/* Code Blocks */
-code {
-    font-family: 'JetBrains Mono', monospace;
-    background: var(--surface);
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.9em;
-    color: #81c784;
-    border: 1px solid var(--border-color);
-}
-
-pre {
-    background: var(--surface);
-    padding: 20px;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin: 2em 0;
-    border: 1px solid var(--border-color);
-}
-
-pre code {
-    background: none;
-    padding: 0;
-    border: none;
-    color: var(--primary-color);
-}
+/* Code Blocks - Styled by Prism.js */
 
 /* Blockquotes */
 blockquote {

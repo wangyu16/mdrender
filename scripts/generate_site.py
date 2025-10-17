@@ -87,18 +87,6 @@ def make_page(title: str, body_html: str, style_href: str = None):
   <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
   <link href="prism/prism-toolbar.min.css" rel="stylesheet" />
 
-  <!-- Override theme CSS to preserve Prism syntax highlighting -->
-  <style>
-    pre code {{
-      color: inherit !important;
-    }}
-    
-    code[class*="language-"],
-    pre[class*="language-"] {{
-      color: inherit !important;
-    }}
-  </style>
-
 </head>
 <body>
 <main>
@@ -141,17 +129,7 @@ def make_index_page(file_list, style_href: str = None):
   {katex_css}
   {style_link}
   {prism_css}
-  <!-- Override theme CSS to preserve Prism syntax highlighting -->
   <style>
-    pre code {{
-      color: inherit !important;
-    }}
-    
-    code[class*="language-"],
-    pre[class*="language-"] {{
-      color: inherit !important;
-    }}
-    
     .theme-selector {{
       position: fixed;
       top: 20px;
