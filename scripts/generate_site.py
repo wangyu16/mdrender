@@ -233,6 +233,7 @@ def make_index_page(file_list, style_href: str = None):
       }}
     }}
   </style>
+  {prism_overrides}
 </head>
 <body>
   <div class="theme-selector">
