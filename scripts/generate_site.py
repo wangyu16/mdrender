@@ -19,7 +19,7 @@ import requests
 
 HERE = Path(__file__).resolve().parent.parent
 SOURCES = HERE / "sources"
-STYLE_DIR = HERE / "style"
+STYLE_DIR = HERE / "docs/style"
 DOCS = HERE / "docs"
 
 # Cloudflare Workers API - publicly available

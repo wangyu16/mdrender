@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>IMPLEMENTATION_SUMMARY</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <link rel="stylesheet" href="../style/style_template1.css">
+  <link rel="stylesheet" href="style/style_template1.css">
   <!-- Prism.js theme - Tomorrow Night -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 
@@ -79,8 +79,10 @@ python3 scripts/generate_site.py --style style_template4_vibrant.css
 # Academic
 python3 scripts/generate_site.py --style style_template5_academic.css</code></pre>
 <h3>Using Custom Classes in Markdown</h3>
-<div class="tip">This is a helpful tip that will be styled appropriately.</div>
-<pre><code class="language-markdown">
+<pre><code class="language-markdown">:::tip
+This is a helpful tip that will be styled appropriately.
+:::
+
 Regular text with {.highlight}highlighted words{/} and {.badge}NEW{/} badges.</code></pre>
 <h2>Testing Results</h2>
 <h3>✅ Generated Successfully</h3>
