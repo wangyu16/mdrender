@@ -32,6 +32,14 @@ PRISM_RESOURCES = {
     "prism-tomorrow.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css",
     "prism-line-numbers.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css",
     "prism-toolbar.min.css": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css",
+    "prism.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "prism-python.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js",
+    "prism-javascript.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js",
+    "prism-bash.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js",
+    "prism-sql.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js",
+    "prism-json.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js",
+    "prism-java.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js",
+    "prism-markup.min.js": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js",
 }
 
 
@@ -92,6 +100,16 @@ def make_page(title: str, body_html: str, style_href: str = None):
 <main>
 {body_html}
 </main>
+
+<!-- Prism.js core and language plugins -->
+<script src="prism/prism.min.js"></script>
+<script src="prism/prism-python.min.js"></script>
+<script src="prism/prism-javascript.min.js"></script>
+<script src="prism/prism-markup.min.js"></script>
+<script src="prism/prism-bash.min.js"></script>
+<script src="prism/prism-sql.min.js"></script>
+<script src="prism/prism-json.min.js"></script>
+<script src="prism/prism-java.min.js"></script>
 </body>
 </html>
 """
@@ -271,6 +289,11 @@ def make_index_page(file_list, style_href: str = None):
           contentDiv.innerHTML = html;
         }}
         
+        // Re-highlight code blocks after loading
+        if (window.Prism) {{
+          Prism.highlightAllUnder(contentDiv);
+        }}
+        
         // Update active link
         document.querySelectorAll('.sidebar nav a').forEach(a => {{
           a.classList.remove('active');
@@ -301,6 +324,16 @@ def make_index_page(file_list, style_href: str = None):
       }}
     }});
   </script>
+
+  <!-- Prism.js core and language plugins -->
+  <script src="prism/prism.min.js"></script>
+  <script src="prism/prism-python.min.js"></script>
+  <script src="prism/prism-javascript.min.js"></script>
+  <script src="prism/prism-markup.min.js"></script>
+  <script src="prism/prism-bash.min.js"></script>
+  <script src="prism/prism-sql.min.js"></script>
+  <script src="prism/prism-json.min.js"></script>
+  <script src="prism/prism-java.min.js"></script>
 </body>
 </html>
 """
