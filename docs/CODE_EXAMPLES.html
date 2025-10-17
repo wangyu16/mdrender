@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CODE_EXAMPLES</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="style/style_template1.css">
+  <!-- Prism.js theme - Tomorrow Night -->
+  <link href="prism/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
+  <link href="prism/prism-toolbar.min.css" rel="stylesheet" />
+
+</head>
+<body>
+<main>
+<h1>Code Examples</h1>
+<p>This document contains various code blocks to test Prism.js syntax highlighting.</p>
+<h2>Python Code</h2>
+<p>Here's a Python example:</p>
+<pre><code class="language-python">def fibonacci(n):
+    &quot;&quot;&quot;Calculate the nth Fibonacci number.&quot;&quot;&quot;
+    if n &lt;= 1:
+        return n
+    
+    a, b = 0, 1
+    for _ in range(n - 1):
+        a, b = b, a + b
+    return b
+
+# Test the function
+for i in range(10):
+    print(f&quot;F({i}) = {fibonacci(i)}&quot;)</code></pre>
+<h2>JavaScript Code</h2>
+<p>JavaScript example with ES6 syntax:</p>
+<pre><code class="language-javascript">// Arrow functions and array methods
+const numbers = [1, 2, 3, 4, 5];
+const squares = numbers
+    .filter(n =&gt; n % 2 === 0)
+    .map(n =&gt; n * n);
+
+console.log(squares); // [4, 16]
+
+class Calculator {
+    constructor(initial = 0) {
+        this.value = initial;
+    }
+    
+    add(x) {
+        this.value += x;
+        return this;
+    }
+    
+    multiply(x) {
+        this.value *= x;
+        return this;
+    }
+}
+
+const calc = new Calculator(5).add(3).multiply(2);
+console.log(calc.value); // 16</code></pre>
+<h2>HTML/CSS Code</h2>
+<p>HTML structure with CSS:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Example Page&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Welcome to the Example&lt;/h1&gt;
+        &lt;p&gt;This is a test page.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>SQL Code</h2>
+<p>Database query example:</p>
+<pre><code class="language-sql">SELECT 
+    u.user_id,
+    u.username,
+    COUNT(p.post_id) as post_count,
+    MAX(p.created_at) as last_post_date
+FROM users u
+LEFT JOIN posts p ON u.user_id = p.user_id
+WHERE u.created_at &gt;= DATE_SUB(NOW(), INTERVAL 30 DAY)
+GROUP BY u.user_id, u.username
+HAVING COUNT(p.post_id) &gt; 0
+ORDER BY post_count DESC
+LIMIT 10;</code></pre>
+<h2>Bash/Shell Script</h2>
+<p>Shell scripting example:</p>
+<pre><code class="language-bash">#!/bin/bash
+
+# Backup script
+BACKUP_DIR=&quot;/backup&quot;
+SOURCE_DIR=&quot;/data&quot;
+TIMESTAMP=$(date +&quot;%Y%m%d_%H%M%S&quot;)
+
+echo &quot;Starting backup at $TIMESTAMP&quot;
+
+if [ ! -d &quot;$BACKUP_DIR&quot; ]; then
+    mkdir -p &quot;$BACKUP_DIR&quot;
+fi
+
+tar -czf &quot;<span class="katex-error" title="ParseError: KaTeX parse error: Expected group after &#x27;_&#x27; at position 18: …CKUP_DIR/backup_̲" style="color:#cc0000">BACKUP_DIR/backup_</span>TIMESTAMP.tar.gz&quot; &quot;$SOURCE_DIR&quot;
+
+if [ $? -eq 0 ]; then
+    echo &quot;Backup completed successfully&quot;
+    find &quot;$BACKUP_DIR&quot; -name &quot;backup_*.tar.gz&quot; -mtime +7 -delete
+else
+    echo &quot;Backup failed!&quot;
+    exit 1
+fi</code></pre>
+<h2>JSON Configuration</h2>
+<p>JSON data format:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;my-project&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;A sample project&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node index.js&quot;,
+    &quot;test&quot;: &quot;jest&quot;,
+    &quot;build&quot;: &quot;webpack&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;express&quot;: &quot;^4.18.0&quot;,
+    &quot;lodash&quot;: &quot;^4.17.21&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;jest&quot;: &quot;^29.0.0&quot;,
+    &quot;webpack&quot;: &quot;^5.0.0&quot;
+  }
+}</code></pre>
+<h2>Line Numbers Test</h2>
+<p>Here's a longer code block to test line numbers:</p>
+<pre><code class="language-java">public class BubbleSort {
+    /**
+     * Sorts an array using bubble sort algorithm
+     */
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        
+        for (int i = 0; i &lt; n - 1; i++) {
+            for (int j = 0; j &lt; n - i - 1; j++) {
+                if (arr[j] &gt; arr[j + 1]) {
+                    // Swap elements
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        int[] numbers = {64, 34, 25, 12, 22, 11, 90};
+        bubbleSort(numbers);
+        
+        System.out.println(&quot;Sorted array:&quot;);
+        for (int num : numbers) {
+            System.out.print(num + &quot; &quot;);
+        }
+    }
+}</code></pre>
+<h2>Plain Text</h2>
+<p>Here's a plain text code block (no language specified):</p>
+<pre><code>This is plain text
+It won&#039;t have syntax highlighting
+But it should still be displayed in a code block
+Line 4
+Line 5</code></pre>
+<hr>
+<p>That's all for the code examples! Check if the syntax highlighting is applied correctly with the Prism.js themes.</p>
+</main>
+</body>
+</html>
