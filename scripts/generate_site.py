@@ -101,6 +101,12 @@ def make_index_page(file_list, style_href: str = None):
     """Generate the main index page with two-panel layout and theme selector."""
     style_link = f'<link id="theme-stylesheet" rel="stylesheet" href="{style_href}">' if style_href else ""
     katex_css = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">'
+    prism_css = """<!-- Prism.js theme - Tomorrow Night -->
+  <link href="prism/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
+  <link href="prism/prism-toolbar.min.css" rel="stylesheet" />"""
     
     # Build the navigation list
     nav_items = []
@@ -122,6 +128,7 @@ def make_index_page(file_list, style_href: str = None):
   <title>Learning Materials</title>
   {katex_css}
   {style_link}
+  {prism_css}
   <style>
     .theme-selector {{
       position: fixed;
