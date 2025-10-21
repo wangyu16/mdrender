@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RESPONSIVE_VISUAL_GUIDE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="style/style_template1.css">
+  <!-- Prism.js default theme -->
+  <link href="prism/prism.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
+  <link href="prism/prism-toolbar.min.css" rel="stylesheet" />
+
+  <!-- Ensure Prism.js token colors are visible -->
+  <style>
+    code[class*="language-"],
+    pre[class*="language-"] {
+      color: inherit !important;
+    }
+    .token {
+      color: inherit;
+    }
+  </style>
+
+</head>
+<body>
+<main>
+<h1>Responsive Layout - Visual Guide</h1>
+<h2>Layout Behavior by Screen Size</h2>
+<h3>Wide Screen (Desktop > 1200px)</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                                                    🎨 Theme: [...▼]│
+│                                                                   │
+│  ┌─────────────┐  ┌─────────────────────────────────────┐       │
+│  │             │  │                                       │       │
+│  │  Contents   │  │         Content Area                 │       │
+│  │  ═════════  │  │    (max-width: 1400px centered)      │       │
+│  │             │  │                                       │       │
+│  │  • Page 1   │  │  Lorem ipsum dolor sit amet...       │       │
+│  │  • Page 2   │  │  Consectetur adipiscing elit...      │       │
+│  │  • Page 3   │  │                                       │       │
+│  │  • Page 4   │  │  [Content rendered here]             │       │
+│  │             │  │                                       │       │
+│  │             │  │                                       │       │
+│  │ (Always     │  │                                       │       │
+│  │  Visible)   │  │                                       │       │
+│  │             │  │                                       │       │
+│  └─────────────┘  └─────────────────────────────────────┘       │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
+
+Features:
+- ☰ Toggle button HIDDEN
+- Sidebar always visible
+- Content centered with max-width
+- Professional two-panel layout</code></pre>
+<h3>Narrow Screen (Tablet/Laptop ≤ 1200px) - Sidebar Hidden</h3>
+<pre><code>┌──────────────────────────────────────────────┐
+│                            🎨 Theme: [...▼]  │
+│                                              │
+│  ☰                                           │
+│                                              │
+│  ┌────────────────────────────────────────┐ │
+│  │                                        │ │
+│  │     Full-Width Content Area            │ │
+│  │                                        │ │
+│  │  Lorem ipsum dolor sit amet...         │ │
+│  │  Consectetur adipiscing elit...        │ │
+│  │                                        │ │
+│  │  [Content uses full width]             │ │
+│  │                                        │ │
+│  │                                        │ │
+│  └────────────────────────────────────────┘ │
+│                                              │
+└──────────────────────────────────────────────┘
+
+Features:
+- ☰ Toggle button VISIBLE (top-left)
+- Sidebar hidden (more screen space)
+- Content uses full width
+- Click ☰ to show sidebar</code></pre>
+<h3>Narrow Screen - Sidebar Visible (After clicking ☰)</h3>
+<pre><code>┌──────────────────────────────────────────────┐
+│                            🎨 Theme: [...▼]  │
+│                                              │
+│  ☰ ┌─────────────┐                          │
+│    │             │                           │
+│    │  Contents   │  ┌───────────────┐       │
+│    │  ═════════  │  │ Content       │       │
+│    │             │  │               │       │
+│    │  • Page 1   │  │ Lorem ipsum..│       │
+│    │  • Page 2   │  │               │       │
+│    │  • Page 3   │  │ [Partially    │       │
+│    │  • Page 4   │  │  hidden by    │       │
+│    │             │  │  sidebar]     │       │
+│    │ (Fixed      │  │               │       │
+│    │  Overlay)   │  └───────────────┘       │
+│    │             │                           │
+│    └─────────────┘                           │
+│                                              │
+└──────────────────────────────────────────────┘
+
+Features:
+- ☰ Toggle button still visible
+- Sidebar slides in from left
+- Fixed overlay (z-index: 999)
+- Click ☰ again to hide
+- Preference saved to localStorage</code></pre>
+<h3>Mobile (≤ 768px) - Sidebar Hidden</h3>
+<pre><code>┌──────────────────────┐
+│   🎨        │
+│  Theme:    │
+│   [...▼]    │
+│                      │
+│  ☰                   │
+│                      │
+│ ┌──────────────────┐ │
+│ │                  │ │
+│ │  Content Area    │ │
+│ │                  │ │
+│ │ Lorem ipsum...   │ │
+│ │                  │ │
+│ │ [Full width]     │ │
+│ │                  │ │
+│ │                  │ │
+│ └──────────────────┘ │
+│                      │
+└──────────────────────┘
+
+Features:
+- Compact theme selector
+- Smaller toggle button
+- Touch-optimized spacing
+- Full-width content</code></pre>
+<h2>UI Elements</h2>
+<h3>Sidebar Toggle Button (☰)</h3>
+<pre><code>┌──────────┐
+│    ☰     │  ← Default state (gray/white)
+└──────────┘
+
+┌──────────┐
+│    ☰     │  ← Hover state (blue background)
+└──────────┘
+   (blue)
+
+Position:
+- Desktop: (20px, 80px) from top-left
+- Mobile:  (10px, 70px) from top-left
+- Size: Compact, touch-friendly
+- Z-index: 1001 (stays on top)</code></pre>
+<h3>Theme Selector</h3>
+<pre><code>┌─────────────────────┐
+│ 🎨 Theme: [▼]       │  ← Top-right corner
+└─────────────────────┘
+
+Dropdown options:
+• Professional
+• Minimalist
+• Dark Mode
+• Vibrant
+• Academic
+• Modern Gradient
+• Serif Academic
+• Minimal Dark
+• Modern Dark</code></pre>
+<h2>Sidebar States</h2>
+<h3>1. Visible (Default on Wide Screens)</h3>
+<pre><code class="language-css">.sidebar {
+  transform: translateX(0);
+  /* Fully visible */
+}</code></pre>
+<h3>2. Hidden (Default on Narrow Screens)</h3>
+<pre><code class="language-css">.sidebar.hidden {
+  transform: translateX(-100%);
+  /* Slides off screen to the left */
+}</code></pre>
+<h2>User Interaction Flow</h2>
+<pre><code>User opens site on narrow screen (≤1200px)
+              ↓
+    Sidebar hidden by default
+              ↓
+    Toggle button (☰) visible
+              ↓
+    User clicks ☰ button
+              ↓
+    Sidebar slides in from left
+              ↓
+    User browses navigation
+              ↓
+    User clicks ☰ again
+              ↓
+    Sidebar slides out to left
+              ↓
+    Preference saved to localStorage
+              ↓
+    Next visit: sidebar state restored</code></pre>
+<h2>Content Width Behavior</h2>
+<h3>Wide Screen (>1400px viewport)</h3>
+<pre><code>┌────────────────────────────────────────────────────────────┐
+│  Sidebar  │        Content (max 1400px)        │  Margin   │
+│    280px  │          centered content          │   Auto    │
+└────────────────────────────────────────────────────────────┘
+           ←──────── 1400px max-width ────────→</code></pre>
+<h3>Medium Screen (1200px-1400px viewport)</h3>
+<pre><code>┌──────────────────────────────────────┐
+│     Content fills available space    │
+│    (slightly less than 1400px)       │
+└──────────────────────────────────────┘</code></pre>
+<h3>Narrow Screen (≤1200px viewport)</h3>
+<pre><code>┌─────────────────────────────────┐
+│  Content fills full width       │
+│  (sidebar hidden or overlay)    │
+└─────────────────────────────────┘</code></pre>
+<h2>Animation Sequence</h2>
+<h3>Sidebar Toggle Animation</h3>
+<pre><code>Frame 1: Sidebar hidden
+┌────┬─────────────┐
+│ ☰  │   Content   │
+│    │             │
+└────┴─────────────┘
+
+Frame 2: User clicks ☰
+┌────┬─────────────┐
+│ ☰ ┌┴──────────┐  │
+│   │ Contents  │  │
+│   │ sliding   │  │
+└───┴───────────┴──┘
+
+Frame 3: Sidebar visible
+┌────┬──────────┬──┐
+│ ☰  │ Contents │ │
+│    │ • Page 1 │ │
+│    │ • Page 2 │ │
+└────┴──────────┴──┘
+
+Transition: 0.3s ease
+Property: transform: translateX()</code></pre>
+<h2>localStorage Data</h2>
+<pre><code class="language-javascript">// Key-Value pairs stored
+{
+  &quot;sidebar-visible&quot;: &quot;true&quot;,    // or &quot;false&quot;
+  &quot;preferred-theme&quot;: &quot;style_template1.css&quot;  // existing feature
+}
+
+// Example usage
+localStorage.getItem(&#039;sidebar-visible&#039;)  // Returns: &quot;true&quot; or &quot;false&quot;
+localStorage.setItem(&#039;sidebar-visible&#039;, &#039;false&#039;)  // Hides sidebar</code></pre>
+<h2>Responsive Breakpoints</h2>
+<pre><code> 0px                768px              1200px              ∞
+  ├──────────────────┼───────────────────┼─────────────────→
+  │     Mobile       │   Narrow Screen   │   Wide Screen   │
+  │                  │                   │                 │
+  │ • Compact UI     │ • Toggle visible  │ • No toggle     │
+  │ • Small toggle   │ • Sidebar hides   │ • Sidebar fixed │
+  │ • Full-width     │ • Full-width      │ • Max 1400px    │
+  │   content        │   content         │   content       │</code></pre>
+<h2>CSS Class States</h2>
+<pre><code class="language-html">&lt;!-- Wide screen --&gt;
+&lt;aside class=&quot;sidebar&quot; id=&quot;sidebar&quot;&gt;
+  &lt;!-- Always visible --&gt;
+&lt;/aside&gt;
+
+&lt;!-- Narrow screen, sidebar hidden --&gt;
+&lt;aside class=&quot;sidebar hidden&quot; id=&quot;sidebar&quot;&gt;
+  &lt;!-- transform: translateX(-100%) --&gt;
+&lt;/aside&gt;
+
+&lt;!-- Narrow screen, sidebar visible --&gt;
+&lt;aside class=&quot;sidebar&quot; id=&quot;sidebar&quot;&gt;
+  &lt;!-- Fixed overlay, transform: translateX(0) --&gt;
+&lt;/aside&gt;</code></pre>
+<h2>Z-Index Layers</h2>
+<pre><code>     Layer 5: (1001) Sidebar toggle button ☰
+              ↑
+     Layer 4: (1000) Theme selector 🎨
+              ↑
+     Layer 3: (999)  Sidebar (when overlay on narrow screens)
+              ↑
+     Layer 2: (1)    Content area
+              ↑
+     Layer 1: (0)    Body background</code></pre>
+<h2>Testing Checklist</h2>
+<h3>Desktop (>1200px)</h3>
+<ul><li>[ ] Sidebar is visible</li><li>[ ] Toggle button is hidden</li><li>[ ] Content is centered with max-width</li><li>[ ] Theme selector works</li></ul>
+<h3>Tablet/Laptop (≤1200px)</h3>
+<ul><li>[ ] Toggle button appears</li><li>[ ] Sidebar hidden by default (first visit)</li><li>[ ] Click toggle shows sidebar</li><li>[ ] Click toggle again hides sidebar</li><li>[ ] Preference persists on reload</li></ul>
+<h3>Mobile (≤768px)</h3>
+<ul><li>[ ] Compact theme selector</li><li>[ ] Smaller toggle button</li><li>[ ] Touch-friendly targets</li><li>[ ] Sidebar overlay works</li></ul>
+<h3>All Sizes</h3>
+<ul><li>[ ] Smooth animations</li><li>[ ] No layout shifts</li><li>[ ] Accessible via keyboard</li><li>[ ] localStorage saves preferences</li></ul>
+<h2>Keyboard Accessibility</h2>
+<pre><code>Tab → Reaches toggle button (☰)
+Enter/Space → Toggles sidebar
+Tab → Navigate to theme selector
+Tab → Navigate to sidebar links (when visible)</code></pre>
+<h2>Summary</h2>
+<p>The responsive layout provides:</p>
+<p>✅ Optimal content width on all screens</p>
+<p>✅ Automatic sidebar management</p>
+<p>✅ User control via toggle button</p>
+<p>✅ Smooth animations</p>
+<p>✅ Persistent preferences</p>
+<p>✅ Professional appearance</p>
+<p>✅ Touch-friendly on mobile</p>
+<p>✅ Keyboard accessible</p>
+</main>
+
+<!-- Prism.js core and language plugins -->
+<script src="prism/prism.min.js"></script>
+<script src="prism/prism-python.min.js"></script>
+<script src="prism/prism-javascript.min.js"></script>
+<script src="prism/prism-markup.min.js"></script>
+<script src="prism/prism-bash.min.js"></script>
+<script src="prism/prism-sql.min.js"></script>
+<script src="prism/prism-json.min.js"></script>
+<script src="prism/prism-java.min.js"></script>
+</body>
+</html>

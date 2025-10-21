@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RESPONSIVE_LAYOUT_FEATURE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="style/style_template1.css">
+  <!-- Prism.js default theme -->
+  <link href="prism/prism.min.css" rel="stylesheet" />
+
+  <!-- Prism.js plugins -->
+  <link href="prism/prism-line-numbers.min.css" rel="stylesheet" />
+  <link href="prism/prism-toolbar.min.css" rel="stylesheet" />
+
+  <!-- Ensure Prism.js token colors are visible -->
+  <style>
+    code[class*="language-"],
+    pre[class*="language-"] {
+      color: inherit !important;
+    }
+    .token {
+      color: inherit;
+    }
+  </style>
+
+</head>
+<body>
+<main>
+<h1>Responsive Layout Feature</h1>
+<h2>Overview</h2>
+<p>The mdrender site now includes responsive layout features that improve usability on different screen sizes, particularly on narrow screens and tablets.</p>
+<h2>New Features</h2>
+<h3>1. Maximum Content Width</h3>
+<p>The content panel now has a maximum width of <strong>1400px</strong>, which:</p>
+<ul><li>Prevents content from becoming too wide on large screens</li><li>Improves readability by maintaining optimal line length</li><li>Centers the content automatically within the available space</li></ul>
+<p><strong>Benefits:</strong></p>
+<ul><li>Better readability (optimal line length for comfortable reading)</li><li>Professional appearance on ultra-wide monitors</li><li>Consistent user experience across different screen sizes</li></ul>
+<h3>2. Automatic Sidebar Collapsing</h3>
+<p>On screens <strong>≤1200px wide</strong>, the sidebar automatically:</p>
+<ul><li>Becomes collapsible</li><li>Hides by default on first visit (saved to localStorage)</li><li>Shows a toggle button (☰) in the top-left corner</li><li>Remembers user preference across page loads</li></ul>
+<p><strong>Screen Width Breakpoints:</strong></p>
+<ul><li><strong>> 1200px</strong>: Sidebar always visible, toggle button hidden</li><li><strong>≤ 1200px</strong>: Sidebar collapsible, toggle button visible</li><li><strong>≤ 768px</strong>: Mobile-optimized UI with smaller toggle button</li></ul>
+<h3>3. Sidebar Toggle Button</h3>
+<p>A floating toggle button appears on narrow screens that:</p>
+<ul><li><strong>Location</strong>: Top-left corner (below theme selector)</li><li><strong>Icon</strong>: Hamburger menu (☰)</li><li><strong>Function</strong>: Shows/hides the navigation sidebar</li><li><strong>State Persistence</strong>: Remembers user preference via localStorage</li><li><strong>Visual Feedback</strong>: Hover effects and smooth animations</li></ul>
+<p><strong>Button Features:</strong></p>
+<ul><li>Semi-transparent background with blur effect</li><li>Smooth hover transitions (changes to blue)</li><li>Positioned at (20px, 80px) on desktop, (10px, 70px) on mobile</li><li>Z-index of 1001 to stay above other elements</li></ul>
+<h2>User Experience</h2>
+<h3>Wide Screens (Desktop)</h3>
+<ul><li>Sidebar is always visible</li><li>Content is centered with max-width of 1400px</li><li>Toggle button is hidden</li><li>Traditional two-panel layout</li></ul>
+<h3>Narrow Screens (Tablet/Small Laptop)</h3>
+<ul><li>Sidebar is hidden by default</li><li>Toggle button appears in top-left</li><li>Click toggle to show/hide sidebar</li><li>Preference saved to localStorage</li><li>Full-width content area when sidebar is hidden</li></ul>
+<h3>Mobile Screens (≤768px)</h3>
+<ul><li>Compact theme selector</li><li>Smaller toggle button</li><li>Reduced padding for content</li><li>Optimized for touch interactions</li></ul>
+<h2>Technical Implementation</h2>
+<h3>CSS Media Queries</h3>
+<pre><code class="language-css">/* Narrow screens - sidebar toggle enabled */
+@media (max-width: 1200px) {
+  .sidebar-toggle {
+    display: block;
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 999;
+  }
+  
+  .sidebar.hidden {
+    transform: translateX(-100%);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    top: 70px;
+    left: 10px;
+    padding: 8px 12px;
+    font-size: 18px;
+  }
+}</code></pre>
+<h3>JavaScript Functionality</h3>
+<h4>Auto-detect Screen Width</h4>
+<pre><code class="language-javascript">function checkScreenWidth() {
+  if (window.innerWidth &lt;= 1200) {
+    const savedState = localStorage.getItem(&#039;sidebar-visible&#039;);
+    if (savedState === null) {
+      // First time on narrow screen, hide by default
+      sidebar.classList.add(&#039;hidden&#039;);
+      sidebarVisible = false;
+    } else {
+      // Restore saved preference
+      sidebarVisible = savedState === &#039;true&#039;;
+      if (!sidebarVisible) {
+        sidebar.classList.add(&#039;hidden&#039;);
+      }
+    }
+  } else {
+    // Wide screen, always show sidebar
+    sidebar.classList.remove(&#039;hidden&#039;);
+    sidebarVisible = true;
+  }
+}</code></pre>
+<h4>Toggle Button Handler</h4>
+<pre><code class="language-javascript">sidebarToggle.addEventListener(&#039;click&#039;, () =&gt; {
+  sidebarVisible = !sidebarVisible;
+  sidebar.classList.toggle(&#039;hidden&#039;);
+  
+  // Save state to localStorage
+  localStorage.setItem(&#039;sidebar-visible&#039;, sidebarVisible);
+});</code></pre>
+<h4>Resize Handler (Debounced)</h4>
+<pre><code class="language-javascript">let resizeTimeout;
+window.addEventListener(&#039;resize&#039;, () =&gt; {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(checkScreenWidth, 150);
+});</code></pre>
+<h2>localStorage Keys</h2>
+<p>The feature uses localStorage to persist user preferences:</p>
+<table><thead><tr><th>Key</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>sidebar-visible</code></td><td><code>&#039;true&#039;</code> or <code>&#039;false&#039;</code></td><td>Remembers if user wants sidebar visible on narrow screens</td></tr><tr><td><code>preferred-theme</code></td><td>Theme filename</td><td>Remembers selected theme (existing feature)</td></tr></tbody></table>
+<h2>Accessibility</h2>
+<h3>Features</h3>
+<ul><li><strong>ARIA Label</strong>: Toggle button includes <code>aria-label=&quot;Toggle sidebar&quot;</code></li><li><strong>Keyboard Accessible</strong>: Button can be activated via keyboard</li><li><strong>Semantic HTML</strong>: Proper use of <code>&lt;aside&gt;</code>, <code>&lt;nav&gt;</code>, and <code>&lt;main&gt;</code> elements</li><li><strong>Visual Feedback</strong>: Clear hover and active states</li><li><strong>No Motion Sickness</strong>: Smooth, professional transitions (0.3s ease)</li></ul>
+<h3>Screen Readers</h3>
+<ul><li>Sidebar marked with semantic <code>&lt;aside&gt;</code> tag</li><li>Navigation clearly marked with <code>&lt;nav&gt;</code> element</li><li>Button has descriptive aria-label</li></ul>
+<h2>Browser Compatibility</h2>
+<h3>Supported Features</h3>
+<ul><li>CSS Flexbox (all modern browsers)</li><li>CSS Transforms (all modern browsers)</li><li>localStorage API (all modern browsers)</li><li>CSS Media Queries (all modern browsers)</li><li>backdrop-filter (modern browsers, graceful degradation)</li></ul>
+<h3>Tested On</h3>
+<ul><li>✅ Chrome/Edge (Chromium)</li><li>✅ Firefox</li><li>✅ Safari</li><li>✅ Mobile browsers (iOS Safari, Chrome Mobile)</li></ul>
+<h2>Performance Considerations</h2>
+<h3>Optimizations</h3>
+<ol><li><strong>Debounced Resize Handler</strong>: Prevents excessive recalculations during window resize</li><li><strong>CSS Transitions</strong>: Hardware-accelerated transforms for smooth animations</li><li><strong>localStorage</strong>: Minimal data storage, instant retrieval</li><li><strong>No JavaScript During Scroll</strong>: Toggle functionality doesn't affect scroll performance</li></ol>
+<h3>CSS Performance</h3>
+<ul><li>Uses <code>transform: translateX()</code> for smooth GPU-accelerated animations</li><li>Transitions limited to 0.3s for responsiveness</li><li>No layout recalculations during toggle</li></ul>
+<h2>Usage Examples</h2>
+<h3>Example 1: Desktop User</h3>
+<ol><li>Opens site on 1920px monitor</li><li>Sees sidebar on left, content centered with max-width</li><li>No toggle button visible</li><li>Professional, spacious layout</li></ol>
+<h3>Example 2: Tablet User (Landscape)</h3>
+<ol><li>Opens site on 1024px tablet</li><li>Sidebar is hidden by default</li><li>Sees toggle button (☰) in top-left</li><li>Clicks toggle to open sidebar</li><li>Browses navigation</li><li>Clicks toggle again to close</li><li>Preference saved for next visit</li></ol>
+<h3>Example 3: Mobile User</h3>
+<ol><li>Opens site on 375px phone</li><li>Compact theme selector in top-right</li><li>Toggle button visible in top-left</li><li>Sidebar hidden to maximize content space</li><li>Can toggle sidebar when needed</li><li>Full-width content for comfortable reading</li></ol>
+<h2>Integration with Existing Features</h2>
+<h3>Theme Switcher</h3>
+<ul><li>Toggle button positioned below theme selector</li><li>Both use similar styling (semi-transparent, blur effect)</li><li>Consistent z-index management</li><li>No visual conflicts</li></ul>
+<h3>Custom Classes</h3>
+<ul><li>All custom classes (<code>.callout</code>, <code>.tip</code>, etc.) work with new layout</li><li>Responsive padding adjustments</li><li>No horizontal overflow issues</li></ul>
+<h3>Code Blocks</h3>
+<ul><li>Prism.js syntax highlighting remains functional</li><li>Code blocks respect max-width constraint</li><li>Horizontal scrolling only when necessary</li></ul>
+<h2>Future Enhancements</h2>
+<p>Potential improvements for future versions:</p>
+<ol><li><strong>Swipe Gestures</strong>: Add touch swipe to open/close sidebar on mobile</li><li><strong>Keyboard Shortcuts</strong>: Add hotkey (e.g., <code>Ctrl+B</code>) to toggle sidebar</li><li><strong>Adjustable Width</strong>: Allow users to drag sidebar edge to resize</li><li><strong>Mini Sidebar</strong>: Collapsed sidebar showing only icons</li><li><strong>Smooth Content Shift</strong>: Animate content when sidebar opens/closes</li><li><strong>Sidebar Position</strong>: Option to move sidebar to right side</li><li><strong>Multiple Breakpoints</strong>: More granular responsive behavior</li><li><strong>Print Optimization</strong>: Hide sidebar and controls when printing</li></ol>
+<h2>Troubleshooting</h2>
+<h3>Issue: Sidebar doesn't appear on narrow screens</h3>
+<p><strong>Solution</strong>: Click the toggle button (☰) in the top-left corner</p>
+<h3>Issue: Sidebar preference not saved</h3>
+<p><strong>Solution</strong>: Check if localStorage is enabled in browser settings</p>
+<h3>Issue: Toggle button overlaps with content</h3>
+<p><strong>Solution</strong>: Toggle button has high z-index (1001) and should stay on top. If issue persists, check for conflicting custom CSS.</p>
+<h3>Issue: Content too wide on large screens</h3>
+<p><strong>Solution</strong>: Content now has max-width: 1400px. If still too wide, check if custom CSS is overriding this.</p>
+<h2>Code Locations</h2>
+<h3>Files Modified</h3>
+<ul><li><code>/workspaces/mdrender/scripts/generate_site.py</code></li></ul>
+<h3>Key Sections</h3>
+<ol><li><strong>CSS Styles</strong> (lines ~170-270): Media queries and responsive styles</li><li><strong>HTML Structure</strong> (lines ~280-310): Toggle button and sidebar markup</li><li><strong>JavaScript</strong> (lines ~315-370): Toggle logic and screen width detection</li></ol>
+<h2>Summary</h2>
+<p>The responsive layout feature enhances the mdrender site by:</p>
+<p>✅ Adding maximum content width (1400px) for better readability</p>
+<p>✅ Auto-collapsing sidebar on narrow screens (≤1200px)</p>
+<p>✅ Providing toggle button for sidebar control</p>
+<p>✅ Saving user preferences via localStorage</p>
+<p>✅ Maintaining compatibility with all existing features</p>
+<p>✅ Following accessibility best practices</p>
+<p>✅ Delivering smooth, professional animations</p>
+<p>The feature is fully backward-compatible and enhances the user experience across all device sizes without breaking existing functionality.</p>
+</main>
+
+<!-- Prism.js core and language plugins -->
+<script src="prism/prism.min.js"></script>
+<script src="prism/prism-python.min.js"></script>
+<script src="prism/prism-javascript.min.js"></script>
+<script src="prism/prism-markup.min.js"></script>
+<script src="prism/prism-bash.min.js"></script>
+<script src="prism/prism-sql.min.js"></script>
+<script src="prism/prism-json.min.js"></script>
+<script src="prism/prism-java.min.js"></script>
+</body>
+</html>
