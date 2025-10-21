@@ -6,11 +6,13 @@ Create web pages for documents, handouts, study guides, etc. from markdown files
 - 🎨 **Nine Modern Style Templates** - Choose from professional, minimalist, dark mode, vibrant, academic, and more
 - 🎯 **Dynamic Theme Switcher** - Users can change themes on the fly with a built-in dropdown selector
 - 💾 **Theme Persistence** - User's theme preference is saved in localStorage and persists across sessions
-- � **Markdown to HTML** - Converts markdown files using a Cloudflare Workers API
+- 📝 **Markdown to HTML** - Converts markdown files using a Cloudflare Workers API
 - 🎭 **Two-Panel Layout** - Left sidebar navigation with right content panel
-- 💅 **Custom CSS Classes** - Special styles for callouts, tips, warnings, and more
+- 📱 **Responsive Design** - Auto-collapsing sidebar on narrow screens with toggle button
+- � **Optimized Content Width** - Maximum width of 1400px for better readability
+- �💅 **Custom CSS Classes** - Special styles for callouts, tips, warnings, and more
 - 📐 **KaTeX Math Support** - Beautiful mathematical equations rendering
-- 📱 **Fully Responsive** - Works on desktop, tablet, and mobile devices
+- � **Smart Layout** - Automatically adapts to screen size with saved preferences
 
 Development environment
 -----------------------
@@ -137,6 +139,40 @@ The generated website includes a **built-in theme switcher** that allows users t
 - Falls back to the default theme generated during build
 
 **Note:** The theme selector is only available in the main `index.html` page. Individual content pages use the style specified during generation.
+
+Responsive Layout
+-----------------
+
+The website automatically adapts to different screen sizes for optimal viewing:
+
+### Features
+- 📏 **Maximum Content Width**: 1400px for comfortable reading on large screens
+- 🔲 **Auto-Collapsing Sidebar**: Hides automatically on screens ≤1200px wide
+- ☰ **Toggle Button**: Hamburger menu in top-left to show/hide navigation
+- 💾 **State Persistence**: Remembers sidebar preference via localStorage
+- 📱 **Mobile Optimized**: Compact controls and touch-friendly design
+
+### Behavior by Screen Size
+
+**Wide Screens (>1200px)**
+- Sidebar always visible
+- Content centered with max-width
+- Toggle button hidden
+- Traditional two-panel layout
+
+**Narrow Screens (≤1200px)**
+- Sidebar hidden by default
+- Toggle button (☰) appears
+- Click to show/hide sidebar
+- Full-width content area
+
+**Mobile (≤768px)**
+- Compact theme selector
+- Smaller toggle button
+- Optimized spacing
+- Touch-friendly controls
+
+See `RESPONSIVE_LAYOUT_FEATURE.md` for detailed technical documentation.
 
 Custom CSS Classes
 ------------------

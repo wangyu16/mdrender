@@ -170,6 +170,52 @@ def make_index_page(file_list, style_href: str = None):
   {style_link}
   {prism_css}
   <style>
+    /* Maximum width for content panel */
+    .content {{
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }}
+    
+    /* Sidebar toggle button */
+    .sidebar-toggle {{
+      position: fixed;
+      top: 80px;
+      left: 20px;
+      z-index: 1001;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      padding: 10px 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      display: none;
+      font-size: 20px;
+      line-height: 1;
+    }}
+    
+    .sidebar-toggle:hover {{
+      background: rgba(59, 130, 246, 0.95);
+      color: white;
+      border-color: #3b82f6;
+      transform: scale(1.05);
+    }}
+    
+    .sidebar-toggle:active {{
+      transform: scale(0.95);
+    }}
+    
+    /* Sidebar state management */
+    .sidebar {{
+      transition: transform 0.3s ease;
+    }}
+    
+    .sidebar.hidden {{
+      transform: translateX(-100%);
+    }}
+    
     .theme-selector {{
       position: fixed;
       top: 20px;
@@ -214,6 +260,33 @@ def make_index_page(file_list, style_href: str = None):
       box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     }}
     
+    /* Responsive behavior for narrow screens */
+    @media (max-width: 1200px) {{
+      .sidebar-toggle {{
+        display: block;
+      }}
+      
+      .sidebar {{
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 999;
+        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
+      }}
+      
+      .sidebar.hidden {{
+        transform: translateX(-100%);
+      }}
+      
+      .content {{
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }}
+    }}
+    
     @media (max-width: 768px) {{
       .theme-selector {{
         top: 10px;
@@ -231,11 +304,22 @@ def make_index_page(file_list, style_href: str = None):
         font-size: 13px;
         min-width: 150px;
       }}
+      
+      .sidebar-toggle {{
+        top: 70px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 18px;
+      }}
     }}
   </style>
   {prism_overrides}
 </head>
 <body>
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+    ☰
+  </button>
+  
   <div class="theme-selector">
     <label for="theme-select">🎨 Theme:</label>
     <select id="theme-select" onchange="changeTheme(this.value)">
@@ -252,7 +336,7 @@ def make_index_page(file_list, style_href: str = None):
   </div>
 
   <div class="container">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <h2>Contents</h2>
       <nav>
         <ul>
@@ -266,6 +350,48 @@ def make_index_page(file_list, style_href: str = None):
   </div>
   
   <script>
+    // Sidebar toggle functionality
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    let sidebarVisible = true;
+    
+    // Check screen width and auto-hide sidebar on narrow screens
+    function checkScreenWidth() {{
+      if (window.innerWidth <= 1200) {{
+        const savedState = localStorage.getItem('sidebar-visible');
+        if (savedState === null) {{
+          // First time on narrow screen, hide by default
+          sidebar.classList.add('hidden');
+          sidebarVisible = false;
+        }} else {{
+          sidebarVisible = savedState === 'true';
+          if (!sidebarVisible) {{
+            sidebar.classList.add('hidden');
+          }}
+        }}
+      }} else {{
+        // Wide screen, always show sidebar
+        sidebar.classList.remove('hidden');
+        sidebarVisible = true;
+      }}
+    }}
+    
+    sidebarToggle.addEventListener('click', () => {{
+      sidebarVisible = !sidebarVisible;
+      sidebar.classList.toggle('hidden');
+      sidebarToggle.textContent = sidebarVisible ? '☰' : '☰';
+      
+      // Save state to localStorage
+      localStorage.setItem('sidebar-visible', sidebarVisible);
+    }});
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {{
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkScreenWidth, 150);
+    }});
+    
     // Theme switching functionality
     function changeTheme(themeName) {{
       const themeLink = document.getElementById('theme-stylesheet');
@@ -339,6 +465,7 @@ def make_index_page(file_list, style_href: str = None):
     
     // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {{
+      checkScreenWidth();
       loadSavedTheme();
       
       // Load first page
