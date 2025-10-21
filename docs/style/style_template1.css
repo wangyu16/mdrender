@@ -76,6 +76,7 @@ body {
   padding: 40px;
   overflow-y: auto;
   max-width: 100%;
+  font-size: 1.4em;
 }
 
 main {

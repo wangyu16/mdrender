@@ -81,6 +81,7 @@ body {
   overflow-y: auto;
   max-width: 100%;
   box-shadow: inset 10px 0 15px -10px rgba(0,0,0,0.05);
+  font-size: 1.2em;
 }
 
 main {
